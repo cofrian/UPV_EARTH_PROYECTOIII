@@ -1,0 +1,343 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+
+\title{UPV-EARTH\\Corpus de Referencia de Planetary Boundaries}
+\author{Luis}
+\date{11 April 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Finalidad del documento}
+
+Este documento describe el corpus de referencia de \textit{Planetary Boundaries} (PBs) construido para el proyecto UPV-EARTH. Su funcion es dejar documentado, de manera clara y rigurosa, \textbf{que contiene el recurso, por que se ha construido asi, como debe interpretarse y como puede reutilizarse en el resto de la pipeline}.
+
+El proyecto trabaja con abstracts de publicaciones cientificas de la Universitat Polit\`ecnica de Val\`encia (UPV). Por ello, el corpus de PBs no puede limitarse a una lista teorica de definiciones generales, pero tampoco puede reducirse a un listado de tecnologias o sectores. Debe actuar como un \textbf{puente metodologico} entre dos niveles:
+
+\begin{itemize}
+\item el nivel conceptual del marco de Planetary Boundaries;
+\item el nivel textual y disciplinar con el que esos limites aparecen en publicaciones reales de la UPV.
+\end{itemize}
+
+El resultado es un recurso pensado para apoyar, con trazabilidad y coherencia, varias tareas del proyecto: baseline lexico, similitud semantica con embeddings, guias de anotacion manual y construccion de prompts para LLM.
+
+\section{Pregunta metodologica que resuelve el corpus}
+
+La pregunta central que resuelve este corpus es la siguiente:
+
+\begin{quote}
+\textit{Como transformar los nueve Planetary Boundaries en una referencia textual operativa que permita decidir, de forma defendible, cuando un abstract esta realmente relacionado con uno o varios limites?}
+\end{quote}
+
+Responder a esta pregunta exige evitar dos errores opuestos:
+
+\begin{enumerate}
+\item \textbf{Ser demasiado abstractos.} Si solo se usan definiciones generales, el recurso queda limpio teoricamente, pero pobre frente al lenguaje real de las publicaciones.
+\item \textbf{Ser demasiado permisivos.} Si cualquier termino de sector, tecnologia o metodo activa un PB, aparecen muchos falsos positivos y el sistema deja de ser defendible.
+\end{enumerate}
+
+Por eso, el corpus se ha construido con una logica jerarquica: primero define cada PB con precision conceptual; despues incorpora vocabulario aplicado compatible con el perfil de la UPV; y finalmente separa los terminos que solo deben servir como contexto o refuerzo.
+
+\section{Fuentes utilizadas y papel de cada una}
+
+La construccion del corpus se ha apoyado en los cuatro documentos disponibles en la carpeta principal del proyecto.
+
+\subsection{Memoria de planificacion del proyecto}
+
+La memoria interna fija la Tarea 2 y deja claro que el equipo necesita convertir los nueve PBs en una referencia estructurada y utilizable. Tambien introduce una regla metodologica muy valiosa: \textbf{no basta con asociar un gran tema a un PB}. El ejemplo que ofrece con PB4 es explicito: un paper de agricultura no debe asignarse automaticamente a \textit{Biogeochemical Flows}; la asignacion debe apoyarse en evidencia sobre nutrientes, fertilizacion, contaminacion o alteracion de ciclos.
+
+Ese criterio se ha generalizado al resto del corpus. En otras palabras, el recurso no se basa en afinidades tematicas vagas, sino en \textbf{mecanismos, procesos o presiones que conectan de forma explicita el texto con el limite planetario}.
+
+\subsection{Paper PB--SDG}
+
+El paper sobre relaciones entre PBs y SDGs aporta la base conceptual mas importante del corpus. De ese documento se han tomado:
+
+\begin{itemize}
+\item las definiciones operativas de los nueve PBs;
+\item las variables de control asociadas a cada limite;
+\item varios ejemplos de interacciones sustantivas entre tierra, agua, agricultura, biodiversidad y clima;
+\item una idea metodologica central: \textbf{evitar conexiones debiles o excesivamente generales}.
+\end{itemize}
+
+Ademas, este paper resulta especialmente util para enriquecer el vocabulario de PB4, PB5, PB6 y PB7, porque menciona con claridad expansion agricola, demanda de agua, deforestacion, gestion forestal, urbanizacion, biofueles, acidificacion marina y biodiversidad.
+
+\subsection{Paper de Larosa et al.}
+
+El articulo de Larosa no redefine los PBs, pero es clave para justificar el modo en que se construye y documenta el corpus. Su principal aportacion es metodologica. Subraya la necesidad de:
+
+\begin{itemize}
+\item interpretabilidad;
+\item validez externa;
+\item replicabilidad;
+\item usabilidad;
+\item transparencia en el uso de LLMs y NLP.
+\end{itemize}
+
+Tambien aporta senales tematicas utiles para el perfil del corpus: \textit{food security}, \textit{water security}, \textit{urban challenges}, \textit{energy transition}, mitigacion y adaptacion. Estas expresiones no se han usado como sustitutos del PB, sino como apoyo para construir la capa aplicada del recurso.
+
+\subsection{Paper UPV--SDG}
+
+El paper de la UPV sobre ODS es el documento que permite adaptar el corpus al contexto institucional. Su utilidad principal no es redefinir los PBs, sino indicar \textbf{como suele aparecer la investigacion UPV en terminos de areas y lenguaje}. El texto confirma, entre otras cosas:
+
+\begin{itemize}
+\item que el proyecto trabaja con un universo de 50{,}000 abstracts UPV;
+\item que los perfiles fuertes de la universidad se relacionan con energia, industria, innovacion, infraestructura y produccion;
+\item que tambien aparecen movilidad sostenible, biodiversidad y gestion ambiental.
+\end{itemize}
+
+Esta informacion justifica que el corpus no se limite a ecologia o biociencias. La UPV produce investigacion en energia, movilidad, materiales, agua, riego, territorio, agronomia, ingenieria ambiental, urbanismo y manufactura, y el corpus debe ser capaz de reconocer esas vias de expresion sin convertirlas en evidencia automatica de un PB.
+
+\section{Principios de dise\~no del corpus}
+
+La construccion del recurso se ha guiado por cinco principios.
+
+\subsection{1. Fidelidad conceptual}
+
+Cada PB debe conservar un nucleo claro y reconocible. Esto obliga a mantener definiciones cortas y largas, variables de control y vocabulario nuclear. El corpus no parte de palabras de moda, sino del significado del limite.
+
+\subsection{2. Adaptacion al lenguaje de la UPV}
+
+El corpus debe poder leer abstracts de una universidad politecnica. Eso implica incorporar vocabulario aplicado ligado a sectores y soluciones reales: riego, fertirrigacion, movilidad, materiales bajos en carbono, planificacion territorial, monitorizacion de biodiversidad, contaminantes emergentes o calidad del aire, entre otros.
+
+\subsection{3. Separacion entre evidencia y contexto}
+
+No todos los terminos tienen el mismo valor. Un concepto como \texttt{deforestation} o \texttt{blue water use} puede ser evidencia fuerte de un PB. En cambio, un metodo como \texttt{GIS} o un sector como \texttt{mobility} solo aportan contexto. Esta separacion es crucial para reducir falsos positivos.
+
+\subsection{4. Trazabilidad}
+
+Cada ampliacion relevante del vocabulario debe poder justificarse. Por eso se ha creado un fichero de trazabilidad donde se resume, para cada PB, que senales aparecen de forma directa en los PDFs del proyecto, que familias aplicadas se han inferido a partir de ellas y que regla de no activacion se debe respetar.
+
+\subsection{5. Reutilizacion}
+
+El corpus no se ha pensado solo para documentar, sino para ser usado. Su estructura permite reutilizarlo como base del baseline, como documento de referencia para embeddings, como guia para anotadores humanos y como bloque reusable en prompts de LLM.
+
+\section{Estructura general del recurso}
+
+El corpus se organiza en tres archivos principales.
+
+\subsection{\texttt{pb\_reference.csv}}
+
+Es el recurso maestro. Contiene una fila por PB y reune toda la informacion conceptual y operativa necesaria para trabajar con ese limite. Este archivo es la pieza central del corpus.
+
+\subsection{\texttt{pb\_corpus\_documents.csv}}
+
+Es una vista textual derivada del recurso maestro. No esta orientada a lectura humana estructurada, sino a usos computacionales. Para cada PB contiene:
+
+\begin{itemize}
+\item un texto conceptual;
+\item un texto aplicado;
+\item un texto integrado listo para tareas de similitud semantica o embedding.
+\end{itemize}
+
+\subsection{\texttt{pb\_keyword\_traceability.csv}}
+
+Es el archivo de trazabilidad. Su objetivo es dejar constancia breve y clara de:
+
+\begin{itemize}
+\item las senales directas obtenidas de los documentos del proyecto;
+\item las familias de keywords aplicadas que se han anadido a partir de esas senales;
+\item la regla de no activacion asociada a cada PB.
+\end{itemize}
+
+\section{Explicacion detallada de los campos de \texttt{pb\_reference.csv}}
+
+El archivo maestro contiene diecisiete columnas. Cada una responde a una necesidad concreta.
+
+\subsection{\texttt{pb\_id}, \texttt{pb\_code}, \texttt{pb\_name}, \texttt{aliases}}
+
+Estas columnas identifican el limite. Permiten un manejo consistente en tablas, scripts y documentacion. Los alias son utiles porque distintos textos pueden referirse al mismo PB con variantes de nombre.
+
+\subsection{\texttt{short\_definition}}
+
+Es una definicion breve y estable del limite. Sirve para lectura rapida y para recordar el nucleo conceptual sin entrar todavia en la regla de clasificacion.
+
+\subsection{\texttt{long\_definition}}
+
+Es la traduccion operativa de la definicion. No solo explica el PB, sino \textbf{cuando debe asignarse}. En este campo se explicita que tipo de evidencia textual se considera suficiente y que tipo de referencia es demasiado vaga.
+
+\subsection{\texttt{control\_variables}}
+
+Recoge las variables de control asociadas al PB en el marco teorico. Aunque no todos los abstracts van a mencionar esas variables, incluirlas es importante por dos razones:
+
+\begin{itemize}
+\item refuerzan la fidelidad al marco de Planetary Boundaries;
+\item ayudan a separar limites conceptualmente cercanos.
+\end{itemize}
+
+\subsection{\texttt{core\_keywords}}
+
+Es el vocabulario nuclear del PB. Aqui solo aparecen terminos estrechamente vinculados con el mecanismo central del limite. Estas keywords son las mas cercanas a una posible activacion directa.
+
+\subsection{\texttt{extended\_keywords}}
+
+Amplian el campo semantico del PB sin abandonar el mecanismo que lo define. Su funcion es captar formulaciones algo menos canonicas que, aun asi, siguen describiendo la presion central del limite.
+
+\subsection{\texttt{applied\_keywords\_upv}}
+
+Esta columna contiene terminos de investigacion aplicada compatibles con el perfil de una universidad como la UPV. Aqui entran tecnologias, soluciones, practicas e infraestructuras que pueden aparecer en abstracts UPV y que son relevantes para el PB. Su papel es \textbf{reforzar}, no sustituir, la evidencia conceptual.
+
+\subsection{\texttt{method\_keywords\_contextual}}
+
+Incluye metodos, herramientas o enfoques de investigacion que pueden aparecer junto al PB, pero que no son prueba suficiente por si mismos. Esta separacion evita confundir, por ejemplo, un metodo de observacion con el fenomeno ambiental observado.
+
+\subsection{\texttt{sector\_keywords}}
+
+Recoge sectores donde es razonable esperar trabajo relacionado con el PB. Igual que en el caso anterior, se trata de informacion contextual. Que un abstract pertenezca a energia, agricultura o urbanismo no basta para asignar un PB si falta el mecanismo ambiental explicito.
+
+\subsection{\texttt{example\_phrases}}
+
+Incluye ejemplos sintacticos cortos de como puede expresarse la relacion entre abstract y PB. Sirven para hacer el recurso mas interpretable por parte del grupo y para facilitar el paso hacia anotacion manual o prompts.
+
+\subsection{\texttt{activation\_logic}}
+
+Es la columna mas importante desde el punto de vista metodologico. Resume, para cada PB, \textbf{como debe usarse la jerarquia de evidencias}. Este campo deja por escrito que tipos de terminos pueden activar, reforzar o simplemente contextualizar una etiqueta.
+
+\subsection{\texttt{exclusion\_notes}}
+
+Documenta explicitamente aquello que \textbf{no debe contarse} como evidencia suficiente. Este campo reduce errores comunes, sobre todo en PBs cercanos a agricultura, agua, urbanismo, energia o biodiversidad.
+
+\subsection{\texttt{evidence\_from\_project\_papers}}
+
+Explica de manera narrativa por que el PB se ha enriquecido con determinadas familias de terminos y en que medida esa decision se apoya directamente en los documentos del proyecto.
+
+\subsection{\texttt{source\_basis}}
+
+Recoge las fuentes documentales que sustentan la fila. Su objetivo es mantener trazabilidad basica y facilitar futuras revisiones.
+
+\section{Logica de activacion del corpus}
+
+Toda la estructura anterior converge en una regla de uso muy concreta:
+
+\begin{quote}
+Un PB solo debe asignarse cuando el abstract contiene evidencia textual suficiente de la presion, proceso o mecanismo ambiental que define ese limite. El lenguaje aplicado, metodologico o sectorial puede reforzar la interpretacion, pero no reemplaza esa evidencia.
+\end{quote}
+
+Esto puede expresarse como una jerarquia.
+
+\subsection{Nivel 1: evidencia fuerte}
+
+Son los terminos y formulaciones de \texttt{core\_keywords}, parte de \texttt{extended\_keywords} y, en ciertos casos, referencias claras a variables de control. Este nivel es el que mas cerca esta de una activacion directa.
+
+\subsection{Nivel 2: evidencia de refuerzo}
+
+Lo forman los \texttt{applied\_keywords\_upv}. Estos terminos conectan el PB con el lenguaje real de la investigacion aplicada, pero solo tienen valor suficiente cuando aparecen junto con evidencia conceptual.
+
+\subsection{Nivel 3: contexto}
+
+Incluye \texttt{method\_keywords\_contextual} y \texttt{sector\_keywords}. Sirven para orientar la lectura, pero nunca deben disparar por si solos una asignacion.
+
+\section{Por que esta distincion es importante}
+
+La distincion entre activacion, refuerzo y contexto evita varios errores comunes:
+
+\begin{itemize}
+\item un paper sobre \texttt{smart grids} no tiene por que ser PB1 si no habla de emisiones, carbono, mitigacion o clima;
+\item un paper con \texttt{GIS} o \texttt{remote sensing} no tiene por que ser PB6 si no hay conversion de uso del suelo o perdida de cobertura natural;
+\item un paper de \texttt{precision agriculture} no tiene por que ser PB4 si no aparecen nutrientes, N, P, eutrofizacion o carga de fertilizantes;
+\item un paper de \texttt{urban biodiversity} no tiene por que ser PB7 si no hay referencia real a biodiversidad, especies, habitats o integridad ecosistemica;
+\item un texto ambiental general, incluso si usa lenguaje de planeta, naturaleza o entorno, no debe activarse automaticamente si no expresa el mecanismo del PB.
+\end{itemize}
+
+Este ultimo punto es particularmente importante para un corpus universitario amplio. Dentro de un conjunto de 50{,}000 abstracts puede haber textos de humanidades, discurso ambiental, analisis culturales o reflexiones sobre sostenibilidad que no describan de forma operativa un limite planetario concreto. El corpus debe ser capaz de distinguir esos casos.
+
+\section{Justificacion sintetica PB por PB}
+
+\subsection{PB1 Climate Change}
+
+Su nucleo se ha construido sobre emisiones, calentamiento, forcing radiativo, mitigacion, adaptacion y carbono. La capa aplicada incorpora energia, redes, movilidad, descarbonizacion industrial y materiales bajos en carbono porque el papel de la UPV en ODS y el paper de Larosa apuntan precisamente a esos dominios. Sin embargo, energia o movilidad sin lenguaje de emisiones o clima no activan PB1.
+
+\subsection{PB2 Ocean Acidification}
+
+Se ha mantenido una formulacion conservadora. El PB exige acidificacion, pH, quimica carbonatada, aragonito o efectos sobre organismos calcificadores. Los contextos costeros y marinos solo refuerzan cuando esos elementos aparecen de forma clara.
+
+\subsection{PB3 Stratospheric Ozone Depletion}
+
+El nucleo es la perdida de ozono estratosferico por sustancias que agotan la capa de ozono. La capa aplicada se limita a refrigerantes, sistemas de refrigeracion y monitorizacion UV, porque no habia evidencia suficiente en los documentos para una ampliacion mayor.
+
+\subsection{PB4 Biogeochemical Flows}
+
+Es uno de los PBs donde la documentacion del proyecto es mas contundente. Su nucleo gira en torno a N, P, eutrofizacion, fertilizacion y contaminacion por nutrientes. La capa aplicada incorpora fertirrigacion, recuperacion de nutrientes, recuperacion de fosforo y gestion de residuos organicos, lo que conecta mucho mejor con agronomia, ingenieria ambiental y circularidad.
+
+\subsection{PB5 Freshwater Use}
+
+Este PB se ha estructurado alrededor de consumo de agua dulce, extracciones, agua azul, escasez, cuencas y acuiferos. La capa aplicada incluye riego por goteo, programacion del riego, evapotranspiracion, reutilizacion y asignacion en cuenca, porque esas expresiones representan bien el lenguaje de muchos trabajos UPV sobre agua y agricultura. No obstante, tratamiento de agua o saneamiento no activan por si solos PB5.
+
+\subsection{PB6 Land-System Change}
+
+El nucleo recoge conversion de coberturas naturales, deforestacion, cambio de uso del suelo, expansion agricola y expansion urbana. La capa aplicada incluye urban sprawl, planificacion territorial, cartografia de coberturas, GIS y teledeteccion, porque el proyecto senala urbanizacion, gestion del territorio, agricultura e infraestructura como contextos relevantes. La clave metodologica es que GIS o planificacion solo tienen valor si el texto realmente describe conversion de suelo o perdida de cobertura natural.
+
+\subsection{PB7 Biosphere Integrity}
+
+El recurso se ha construido sobre biodiversidad, especies, integridad ecosistemica, funcionalidad y habitats. La capa aplicada se apoya mucho en el paper UPV--SDG, que menciona zonas verdes e inventario de biodiversidad. Por eso se han incorporado restauracion, corredores ecologicos, infraestructura verde, biodiversidad urbana y seguimiento de especies, siempre subordinados a evidencia explicita de biodiversidad.
+
+\subsection{PB8 Novel Entities}
+
+Su nucleo contiene contaminantes y sustancias nuevas o sinteticamente producidas: PFAS, plasticos, microplasticos, plaguicidas, farmacos ambientales o nanomateriales. La capa aplicada conecta con materiales, quimica, aguas residuales y produccion, pero con una condicion estricta: debe identificarse claramente la sustancia sintetica, persistente, toxica o emergente.
+
+\subsection{PB9 Atmospheric Aerosol Loading}
+
+El nucleo es particulas, aerosoles, material particulado, carbono negro, PM y AOD. La capa aplicada incorpora calidad del aire urbana, trafico, particulas industriales, sensores y exposicion, porque son contextos razonables en una universidad tecnica. Aun asi, emisiones o calidad del aire en general no activan el PB si no aparecen particulas o aerosoles de forma explicita.
+
+\section{Utilidad del corpus en el resto del proyecto}
+
+El corpus esta disenado para alimentar varias tareas posteriores.
+
+\subsection{Baseline lexico}
+
+Las columnas de keywords permiten construir una primera clasificacion basada en coincidencias, pero ya con una jerarquia interna. No todas las coincidencias deberian tener el mismo peso.
+
+\subsection{Embeddings y similitud semantica}
+
+El archivo \texttt{pb\_corpus\_documents.csv} ofrece textos de referencia listos para comparacion semantica con abstracts limpios. Esto facilita una estrategia basada en embeddings de PBs frente a embeddings de abstracts.
+
+\subsection{Anotacion manual}
+
+Las definiciones largas, las notas de exclusion y la logica de activacion funcionan como primer borrador de una guia de etiquetado. Esto permite que los anotadores compartan criterio y que la evaluacion sea mas consistente.
+
+\subsection{Prompts para LLM}
+
+El recurso puede reutilizarse casi directamente en prompts estructurados. Las definiciones, reglas de activacion y restricciones ayudan a reducir respuestas demasiado vagas o basadas en asociaciones debiles.
+
+\section{Interpretabilidad y defensa metodologica}
+
+Uno de los valores principales del corpus es que hace visible la razon de cada decision. No se limita a decir que un abstract ``se parece'' a un PB. En su lugar, deja documentado:
+
+\begin{itemize}
+\item que define el limite;
+\item que tipo de lenguaje lo expresa;
+\item que lenguaje solo debe tomarse como apoyo;
+\item que casos deben excluirse para evitar errores.
+\end{itemize}
+
+Esta forma de documentar es coherente con el enfoque prudente que exige el proyecto cuando use baseline, embeddings o LLMs. Un sistema puede ser mas potente que otro, pero si no queda claro por que etiqueta como etiqueta, su utilidad cientifica y defendibilidad metodologica disminuyen.
+
+\section{Alcance y limites del recurso}
+
+Aunque el corpus esta planteado como recurso final de referencia para la Tarea 2, conviene dejar claros sus limites metodologicos:
+
+\begin{itemize}
+\item no sustituye la validacion posterior sobre muestras reales de abstracts;
+\item no convierte por si solo el problema en una clasificacion perfecta;
+\item algunos PBs cuentan con mas evidencia contextual en los documentos del proyecto que otros;
+\item el recurso esta construido para la UPV, pero sigue anclado en el marco general de Planetary Boundaries, no en una taxonomia local independiente.
+\end{itemize}
+
+Estos limites no reducen su valor; simplemente definen con precision para que sirve. El corpus no pretende cerrar toda la pipeline, sino \textbf{proporcionar una base conceptual y operativa estable para que el resto de la pipeline pueda construirse con coherencia}.
+
+\section{Conclusion}
+
+El corpus de referencia de Planetary Boundaries de UPV-EARTH traduce un marco teorico complejo a un recurso textual operativo, interpretable y reutilizable. Su aportacion principal es doble:
+
+\begin{itemize}
+\item conserva el rigor conceptual de los nueve limites planetarios;
+\item incorpora una capa aplicada capaz de dialogar con el tipo de investigacion que puede aparecer en una universidad como la UPV.
+\end{itemize}
+
+Gracias a esa combinacion, el recurso permite leer abstracts con un criterio mas fino: distingue evidencia fuerte de contexto, separa mecanismos ambientales de simples afinidades tematicas y deja documentado el por que de cada familia de terminos. Esa es la razon por la que este corpus constituye la pieza de base para el baseline, los embeddings, la anotacion manual y el trabajo posterior con LLMs.
+
+\end{document}
