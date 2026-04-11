@@ -45,3 +45,14 @@ Ruta recomendada:
 ## Flujo actual del corpus
 
 El flujo principal del proyecto para extracción de PDFs es el pipeline unificado de 1000 documentos con 3 bloques de descarga, limpieza, deduplicación y trazabilidad. La explicación detallada está en [docs/flujo_extraccion_1000.md](docs/flujo_extraccion_1000.md).
+
+## CSV para BERT embeddings
+
+Para la siguiente fase (BERT/embeddings), usar estos archivos:
+
+1. **Entrada principal recomendada**: [master_corpus_mixto_1000_clean_enriched.csv](master_corpus_mixto_1000_clean_enriched.csv)
+2. **Alternativa mínima**: [master_corpus_mixto_1000_clean.csv](master_corpus_mixto_1000_clean.csv)
+
+Referencia detallada de qué columna usar y cuáles no usar para embeddings:
+
+- [docs/bert_embeddings_inputs.md](docs/bert_embeddings_inputs.md)

@@ -56,7 +56,18 @@ CPU_COUNT = os.cpu_count() or 1
 MAX_WORKERS = 1 if CPU_COUNT <= 1 else min(4, CPU_COUNT)
 
 DOMAIN_STOPWORDS = {"doi", "http", "https", "www", "com", "org", "edu", "introduction", "abstract", "keywords", "index", "terms"}
-STOPWORDS = STOPWORDS | DOMAIN_STOPWORDS
+AUXILIARY_NOISE_STOPWORDS = {
+    "be", "been", "being", "am", "is", "are", "was", "were",
+    "do", "does", "did", "done",
+    "will", "would", "should", "could", "might", "must", "shall", "can", "may",
+    "get", "gets", "got", "getting",
+    "make", "makes", "made", "making",
+    "using", "used", "use",
+    "however", "therefore", "thus", "although",
+    "paper", "study", "studies", "article", "research",
+    "keyword", "keywords", "author", "authors", "et", "al",
+}
+STOPWORDS = STOPWORDS | DOMAIN_STOPWORDS | AUXILIARY_NOISE_STOPWORDS
 
 
 def safe_filename(file_name):
@@ -298,11 +309,12 @@ def extract_top_terms(full_text, top_n=12):
     tokens = re.findall(r"[a-zA-ZÀ-ÿ]{4,}", text)
     filtered = []
     for token in tokens:
-        if token in STOPWORDS:
+        normalized_token = strip_accents(token)
+        if normalized_token in STOPWORDS:
             continue
-        if token.isdigit():
+        if normalized_token.isdigit():
             continue
-        filtered.append(token)
+        filtered.append(normalized_token)
 
     if not filtered:
         return None
