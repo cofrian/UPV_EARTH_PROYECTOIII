@@ -1,6 +1,6 @@
 # Entorno Python del proyecto
 
-Esta guia deja el proyecto preparado para trabajar con Python 3.11, un entorno virtual aislado y Jupyter.
+Esta guia deja el proyecto preparado para trabajar con Python 3.11, un entorno virtual aislado, Jupyter y el cliente de Ollama.
 
 ## Estructura recomendada
 
@@ -43,7 +43,7 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 ```
 
-Eso instala JupyterLab e ipykernel desde `pyproject.toml`.
+Eso instala JupyterLab, ipykernel y el cliente de Ollama desde `pyproject.toml`.
 
 ## Abrir Jupyter
 
@@ -55,6 +55,37 @@ Si prefieres usar el binario del entorno:
 
 ```bash
 .venv/bin/jupyter lab
+```
+
+## Usar Ollama desde Python
+
+Con el servicio de Ollama activo en la maquina, puedes probar una llamada basica asi:
+
+```bash
+python - <<'PY'
+from ollama import chat
+
+response = chat(
+	model="llama3.1:8b",
+	messages=[
+		{"role": "user", "content": "Di hola en una frase corta"},
+	],
+)
+
+print(response.message.content)
+PY
+```
+
+Si el modelo no esta descargado aun, primero haz:
+
+```bash
+ollama pull llama3.1:8b
+```
+
+Y si quieres comprobar que el servicio responde:
+
+```bash
+ollama list
 ```
 
 ## Kernel para notebooks
