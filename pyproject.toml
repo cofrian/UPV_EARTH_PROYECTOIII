@@ -12,5 +12,9 @@ dependencies = [
   "jupyterlab>=3.6,<4.0",
   "ipykernel>=6.0",
   "ollama>=0.5.0",
+  "pandas>=2.0",
+  "pymupdf>=1.23",
+  "langdetect>=1.0.9",
+  "nltk>=3.8",
 ]
 
