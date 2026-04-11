@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upv-earth-proyectoiii"
+version = "0.1.0"
+description = "Base de trabajo para el proyecto UPV Earth"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "jupyterlab>=3.6,<4.0",
+  "ipykernel>=6.0",
+]
+
