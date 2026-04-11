@@ -1,8 +1,10 @@
 # UPV_EARTH_PROYECTOIII
 
-## Documentacion
+Estado actual del trabajo preparado para subir al repositorio del proyecto.
 
-- Guia SSH + VS Code: [docs/guia-ssh-vscode.md](docs/guia-ssh-vscode.md)
+## Documentación
+
+- Guía SSH + VS Code: [docs/guia-ssh-vscode.md](docs/guia-ssh-vscode.md)
 - Entorno Python y Jupyter: [docs/entorno-python.md](docs/entorno-python.md)
 - Flujo completo de extracción del corpus mixto: [docs/flujo_extraccion_1000.md](docs/flujo_extraccion_1000.md)
 
@@ -28,6 +30,18 @@ En otras palabras, `listado_pdfs.txt` es el inventario plano de todos los PDFs a
 
 Ese flujo de 30 documentos fue útil para la fase exploratoria, pero ya quedó sustituido por el pipeline de 1000 documentos con limpieza, deduplicación y trazabilidad.
 
+## Corpus PB
+
+El avance adicional del corpus de Planetary Boundaries está en [corpus_PB/README.md](corpus_PB/README.md).
+
+Ruta recomendada:
+
+1. [corpus_PB/README.md](corpus_PB/README.md)
+2. [corpus_PB/docs/corpus_pb_methodology.pdf](corpus_PB/docs/corpus_pb_methodology.pdf)
+3. [corpus_PB/docs/pb_reference_readable_es.pdf](corpus_PB/docs/pb_reference_readable_es.pdf)
+4. [corpus_PB/docs/pb_reference_readable_en.pdf](corpus_PB/docs/pb_reference_readable_en.pdf)
+5. [corpus_PB/data/pb_reference.csv](corpus_PB/data/pb_reference.csv)
+
 ## Flujo actual del corpus
 
-El flujo principal del proyecto ya no es el de 30 PDFs, sino el pipeline unificado de 1000 documentos con 3 bloques de descarga, limpieza, deduplicación y trazabilidad. La explicación detallada está en [docs/flujo_extraccion_1000.md](docs/flujo_extraccion_1000.md).
+El flujo principal del proyecto para extracción de PDFs es el pipeline unificado de 1000 documentos con 3 bloques de descarga, limpieza, deduplicación y trazabilidad. La explicación detallada está en [docs/flujo_extraccion_1000.md](docs/flujo_extraccion_1000.md).
