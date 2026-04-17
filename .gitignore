@@ -12,6 +12,8 @@
 .ipynb_checkpoints/
 __pycache__/
 .venv/
+venv/
+env/
 
 # OS/editor noise
 .DS_Store
