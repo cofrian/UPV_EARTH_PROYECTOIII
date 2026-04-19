@@ -1,3 +1,4 @@
+import argparse
 import re
 import unicodedata
 from collections import Counter
@@ -7,10 +8,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 BASE_DIR = Path('.')
-CLEAN_CSV = BASE_DIR / 'master_corpus_mixto_1000_clean.csv'
-TRACE_CSV = BASE_DIR / 'master_corpus_mixto_1000_traceability.csv'
+CLEAN_CSV = BASE_DIR / 'data/corpus/master_corpus_mixto_1000_clean.csv'
+TRACE_CSV = BASE_DIR / 'data/corpus/master_corpus_mixto_1000_traceability.csv'
 OUT_DIR = BASE_DIR / 'docs' / 'eda'
-ENRICHED_CSV = BASE_DIR / 'master_corpus_mixto_1000_clean_enriched.csv'
+ENRICHED_CSV = BASE_DIR / 'data/corpus/master_corpus_mixto_1000_clean_enriched.csv'
 
 EDITORIAL_PATTERNS = [
     r'(?i)published by[^.]*\.?',
@@ -129,11 +130,22 @@ def top_ngrams(series: pd.Series, ngram_size=1, topn=30):
     return pd.DataFrame(counter.most_common(topn), columns=['term', 'count'])
 
 
-def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+def parse_args():
+    parser = argparse.ArgumentParser(description='Genera corpus enriquecido y salidas EDA.')
+    parser.add_argument('--input', type=Path, default=CLEAN_CSV, help='CSV limpio de entrada')
+    parser.add_argument('--trace', type=Path, default=TRACE_CSV, help='CSV de trazabilidad')
+    parser.add_argument('--output', type=Path, default=ENRICHED_CSV, help='CSV enriquecido de salida')
+    parser.add_argument('--out-dir', type=Path, default=OUT_DIR, help='Directorio de salidas EDA')
+    return parser.parse_args()
 
-    clean = pd.read_csv(CLEAN_CSV)
-    trace = pd.read_csv(TRACE_CSV)
+
+def main():
+    args = parse_args()
+
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+
+    clean = pd.read_csv(args.input)
+    trace = pd.read_csv(args.trace)
 
     clean['abstract_raw'] = clean['abstract'].fillna('')
     clean['abstract_norm'] = clean['abstract_raw'].map(normalize_text)
@@ -147,8 +159,8 @@ def main():
         'abstract', 'clean_abstract', 'year', 'doi', 'source', 'authors', 'keywords',
         'journal', 'language', 'top_terms_no_stopwords', 'abstract_norm_len'
     ]
-    clean = clean[[c for c in ordered if c in cols or c in ordered]]
-    clean.to_csv(ENRICHED_CSV, index=False)
+    clean = clean[[c for c in ordered if c in cols]]
+    clean.to_csv(args.output, index=False)
 
     # EDA base
     n_processed = len(trace)
@@ -157,7 +169,7 @@ def main():
 
     year_series = pd.to_numeric(clean['year'], errors='coerce').dropna().astype(int)
     year_dist = year_series.value_counts().sort_index().rename_axis('year').reset_index(name='n')
-    year_dist.to_csv(OUT_DIR / 'year_distribution.csv', index=False)
+    year_dist.to_csv(args.out_dir / 'year_distribution.csv', index=False)
 
     lengths = clean['abstract_norm_len']
     desc = {
@@ -180,20 +192,20 @@ def main():
             (clean['abstract_norm'].str.len() == 0).mean() * 100,
         ],
     })
-    null_table.to_csv(OUT_DIR / 'null_table.csv', index=False)
+    null_table.to_csv(args.out_dir / 'null_table.csv', index=False)
 
     source_dist = clean['source'].fillna('NA').value_counts().rename_axis('source').reset_index(name='n')
-    source_dist.to_csv(OUT_DIR / 'source_distribution.csv', index=False)
+    source_dist.to_csv(args.out_dir / 'source_distribution.csv', index=False)
 
     top_uni = top_ngrams(clean['clean_abstract_lex'], ngram_size=1, topn=50)
     top_bi = top_ngrams(clean['clean_abstract_lex'], ngram_size=2, topn=50)
-    top_uni.to_csv(OUT_DIR / 'top_unigrams.csv', index=False)
-    top_bi.to_csv(OUT_DIR / 'top_bigrams.csv', index=False)
+    top_uni.to_csv(args.out_dir / 'top_unigrams.csv', index=False)
+    top_bi.to_csv(args.out_dir / 'top_bigrams.csv', index=False)
 
     # Sesgos/huecos desde trazabilidad
     drop = trace[trace['filter_status'] == 'dropped'].copy()
     reason_counts = drop['filter_reason'].fillna('').value_counts().rename_axis('reason_combo').reset_index(name='n')
-    reason_counts.to_csv(OUT_DIR / 'drop_reason_combinations.csv', index=False)
+    reason_counts.to_csv(args.out_dir / 'drop_reason_combinations.csv', index=False)
 
     # Gráficas
     plt.style.use('default')
@@ -205,7 +217,7 @@ def main():
         ax.set_xlabel('Año')
         ax.set_ylabel('Nº de abstracts')
         fig.tight_layout()
-        fig.savefig(OUT_DIR / 'publicaciones_por_anio.png', dpi=150)
+        fig.savefig(args.out_dir / 'publicaciones_por_anio.png', dpi=150)
         plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(8, 4))
@@ -214,7 +226,7 @@ def main():
     ax.set_xlabel('Longitud (caracteres)')
     ax.set_ylabel('Frecuencia')
     fig.tight_layout()
-    fig.savefig(OUT_DIR / 'distribucion_longitud_abstracts.png', dpi=150)
+    fig.savefig(args.out_dir / 'distribucion_longitud_abstracts.png', dpi=150)
     plt.close(fig)
 
     # Resumen Markdown para el PDF
@@ -249,11 +261,11 @@ def main():
         md.append('\n## Top términos (bigramas)')
         md.extend([f"- {t}: {int(c)}" for t, c in top_bi.head(20).itertuples(index=False)])
 
-    (OUT_DIR / 'eda_summary.md').write_text('\n'.join(md), encoding='utf-8')
+    (args.out_dir / 'eda_summary.md').write_text('\n'.join(md), encoding='utf-8')
 
     print('EDA completado.')
-    print(f'CSV enriquecido: {ENRICHED_CSV}')
-    print(f'Reportes en: {OUT_DIR}')
+    print(f'CSV enriquecido: {args.output}')
+    print(f'Reportes en: {args.out_dir}')
 
 
 if __name__ == '__main__':

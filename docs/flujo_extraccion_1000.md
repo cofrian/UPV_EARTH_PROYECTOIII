@@ -4,8 +4,8 @@
 
 El flujo principal está en [extraccion_corpus_mixto.py](../extraccion_corpus_mixto.py). Procesa una muestra aleatoria de 1000 PDF en 3 bloques, descarga cada bloque con `rclone`, extrae texto y metadatos, filtra y deduplica registros, y escribe dos CSV finales:
 
-- `master_corpus_mixto_1000_clean.csv`
-- `master_corpus_mixto_1000_traceability.csv`
+- `data/corpus/master_corpus_mixto_1000_clean.csv`
+- `data/corpus/master_corpus_mixto_1000_traceability.csv`
 
 La idea es separar claramente dos cosas:
 
@@ -22,7 +22,7 @@ La idea es separar claramente dos cosas:
 
 ### CSV final limpio
 
-`master_corpus_mixto_1000_clean.csv` contiene solo los registros que pasan los filtros.
+`data/corpus/master_corpus_mixto_1000_clean.csv` contiene solo los registros que pasan los filtros.
 
 Columnas principales:
 
@@ -41,7 +41,7 @@ Columnas principales:
 
 ### CSV de trazabilidad
 
-`master_corpus_mixto_1000_traceability.csv` contiene tanto lo aceptado como lo descartado, con el motivo del filtro.
+`data/corpus/master_corpus_mixto_1000_traceability.csv` contiene tanto lo aceptado como lo descartado, con el motivo del filtro.
 
 Columnas adicionales importantes:
 
@@ -102,7 +102,7 @@ Cada descarte queda anotado en `filter_reason`.
 
 ### 6. Trazabilidad
 
-Los registros descartados no se pierden: se escriben en `master_corpus_mixto_1000_traceability.csv` con la razón exacta del descarte.
+Los registros descartados no se pierden: se escriben en `data/corpus/master_corpus_mixto_1000_traceability.csv` con la razón exacta del descarte.
 
 ## Keywords
 

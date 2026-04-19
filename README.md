@@ -7,6 +7,20 @@ Estado actual del trabajo preparado para subir al repositorio del proyecto.
 - Guía SSH + VS Code: [docs/guia-ssh-vscode.md](docs/guia-ssh-vscode.md)
 - Entorno Python y Jupyter: [docs/entorno-python.md](docs/entorno-python.md)
 - Flujo completo de extracción del corpus mixto: [docs/flujo_extraccion_1000.md](docs/flujo_extraccion_1000.md)
+- Organización del repositorio (mapa de carpetas): [docs/ORGANIZACION_REPO.md](docs/ORGANIZACION_REPO.md)
+
+## Estructura del proyecto
+
+Distribución actual resumida:
+
+- `data/corpus/`: CSV maestros del pipeline (`clean`, `clean_enriched`, `traceability` y evaluaciones).
+- `prompts/`: activos de prompts y contexto de prompt.
+- `docs/eda/`: salidas EDA (tablas, figuras y resumen) y `docs/eda/auditoria/` para control de calidad de la muestra final real.
+- `muestras/`: listados y muestras seleccionadas (aleatoria y balanceada).
+- `scripts/aux/`: scripts auxiliares no críticos para el pipeline principal.
+- raíz del proyecto: scripts nucleares de extracción y EDA para mantener compatibilidad de ejecución.
+
+Detalle completo y actualizado en: [docs/ORGANIZACION_REPO.md](docs/ORGANIZACION_REPO.md).
 
 ## Flujo de PDFs
 
@@ -50,8 +64,8 @@ El flujo principal del proyecto para extracción de PDFs es el pipeline unificad
 
 Para la siguiente fase (BERT/embeddings), usar estos archivos:
 
-1. **Entrada principal recomendada**: [master_corpus_mixto_1000_clean_enriched.csv](master_corpus_mixto_1000_clean_enriched.csv)
-2. **Alternativa mínima**: [master_corpus_mixto_1000_clean.csv](master_corpus_mixto_1000_clean.csv)
+1. **Entrada principal recomendada**: [data/corpus/master_corpus_mixto_1000_clean_enriched.csv](data/corpus/master_corpus_mixto_1000_clean_enriched.csv)
+2. **Alternativa mínima**: [data/corpus/master_corpus_mixto_1000_clean.csv](data/corpus/master_corpus_mixto_1000_clean.csv)
 
 Referencia detallada de qué columna usar y cuáles no usar para embeddings:
 

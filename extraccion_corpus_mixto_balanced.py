@@ -7,7 +7,7 @@ import html
 import subprocess
 import time
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import fitz  # PyMuPDF
@@ -43,7 +43,7 @@ except Exception:
 SAMPLE_SIZE = 1000
 DOWNLOAD_BLOCKS = 3
 LIST_FILE = os.path.join("muestras", "listado_pdfs.txt")
-SAMPLE_MANIFEST = os.path.join("muestras", "muestra_seleccionada_1000.csv")
+SAMPLE_MANIFEST = os.path.join("muestras", "muestra_seleccionada_1000_balanced.csv")
 DOWNLOAD_DIR = "muestra_pdfs"
 OUTPUT_FILE = "data/corpus/master_corpus_mixto_1000_clean.csv"
 TRACEABILITY_FILE = "data/corpus/master_corpus_mixto_1000_traceability.csv"
@@ -206,7 +206,6 @@ def extract_journal(doc, preview_text):
 
 
 def extract_abstract_from_preview(preview_text):
-    # Patrones frecuentes en papers (inglés/español y variantes de maquetación).
     start_patterns = [
         r"(?i)\babstract\b\s*[:\n-]?",
         r"(?i)\ba\s*b\s*s\s*t\s*r\s*a\s*c\s*t\b\s*[:\n-]?",
@@ -226,16 +225,13 @@ def extract_abstract_from_preview(preview_text):
         candidate = tail[:end.start()] if end else tail[:2500]
         candidate = normalize_text(candidate)
 
-        # Filtro mínimo para evitar capturar ruido muy corto.
         if len(candidate) >= 120:
             return candidate
 
-    # Fallback: primera ventana sustancial antes de "Introduction" cuando falta encabezado explícito.
     intro = re.search(r"(?i)\b(1\.?\s*)?introduction\b", preview_text)
     head = preview_text[:intro.start()] if intro else preview_text[:3000]
     head = normalize_text(head)
 
-    # Cortamos por frases para no mezclar demasiado título/metadata.
     sentences = re.split(r"(?<=[.!?])\s+", head)
     joined = ""
     for sentence in sentences:
@@ -273,7 +269,6 @@ def extract_keywords(raw_text):
         if blank_stop:
             chunk = chunk[:blank_stop.start()]
 
-        # Se mantiene el texto lo más crudo posible hasta después de localizar el bloque.
         chunk = chunk.replace("\r", "")
         pieces = re.split(r"[\n,;|•·]+", chunk)
         cleaned = []
@@ -286,7 +281,6 @@ def extract_keywords(raw_text):
                 continue
             cleaned.append(token)
 
-        # Evita ruido repetido conservando orden.
         unique = []
         seen = set()
         for item in cleaned:
@@ -389,7 +383,73 @@ def extract_path_parts(relative_path):
     return pb_folder, source_folder
 
 
+def build_balanced_sample():
+    """
+    Crea una muestra estratificada equilibrada donde cada Planetary Boundary
+    tiene la misma cantidad de papers.
+    """
+    all_paths = load_pdf_inventory(LIST_FILE)
+    
+    # Agrupar por Planetary Boundary
+    pb_groups = defaultdict(list)
+    for path in all_paths:
+        pb_folder, _ = extract_path_parts(path)
+        pb_groups[pb_folder].append(path)
+    
+    # Calcular cantidad de papers por PB
+    num_pbs = len(pb_groups)
+    papers_per_pb = SAMPLE_SIZE // num_pbs
+    remainder = SAMPLE_SIZE % num_pbs
+    
+    print(f"\n=== MUESTREO ESTRATIFICADO EQUILIBRADO ===")
+    print(f"Total de PDFs en inventario: {len(all_paths):,}")
+    print(f"Cantidad de PB encontrados: {num_pbs}")
+    print(f"Papers por PB: {papers_per_pb}")
+    print(f"Remainder (papers adicionales): {remainder}")
+    print(f"Tamaño total de muestra: {SAMPLE_SIZE}\n")
+    
+    selected = []
+    pb_distribution = {}
+    
+    # Muestreo estratificado: mismo tamaño para cada PB
+    for pb_index, (pb_folder, paths) in enumerate(sorted(pb_groups.items()), 1):
+        # Algunos PB pueden tener papers adicionales si hay remainder
+        size_for_pb = papers_per_pb + (1 if pb_index <= remainder else 0)
+        
+        # Hacer muestreo aleatorio dentro del grupo
+        sampled = random.sample(paths, min(size_for_pb, len(paths)))
+        selected.extend(sampled)
+        
+        pb_distribution[pb_folder] = len(sampled)
+        print(f"  {pb_folder:<35} {len(sampled):>4} papers (disponibles: {len(paths):,})")
+    
+    print(f"\nTotal muestreado: {len(selected)} papers")
+    
+    # Crear estructura de datos para salida
+    sample = []
+    for remote_path in selected:
+        pb_folder, source_folder = extract_path_parts(remote_path)
+        sample.append(
+            {
+                "doc_id": build_doc_id(remote_path),
+                "remote_path": remote_path,
+                "file_name": os.path.basename(remote_path),
+                "pb_folder": pb_folder,
+                "source_folder": source_folder,
+            }
+        )
+    
+    # Guardar manifest
+    os.makedirs(os.path.dirname(SAMPLE_MANIFEST), exist_ok=True)
+    pd.DataFrame(sample).to_csv(SAMPLE_MANIFEST, index=False)
+    
+    print(f"\nManifesto guardado en: {SAMPLE_MANIFEST}")
+    
+    return sample
+
+
 def build_random_sample():
+    """Muestreo aleatorio sin estratificación (función original)"""
     all_paths = load_pdf_inventory(LIST_FILE)
     selected = random.sample(all_paths, min(SAMPLE_SIZE, len(all_paths)))
 
@@ -693,10 +753,11 @@ def make_trace_row(row):
 
 def main():
     start = time.time()
-    sample = build_random_sample()
+    # CAMBIO PRINCIPAL: Usar muestreo estratificado equilibrado en lugar de aleatorio
+    sample = build_balanced_sample()
     sample_blocks = split_sample_into_blocks(sample, DOWNLOAD_BLOCKS)
 
-    print(f"Muestra aleatoria: {len(sample)} PDFs")
+    print(f"Muestra estratificada equilibrada: {len(sample)} PDFs")
     os.makedirs(DOWNLOAD_DIR, exist_ok=True)
     if os.path.exists(OUTPUT_FILE):
         os.remove(OUTPUT_FILE)
@@ -728,13 +789,17 @@ def main():
                 kept_rows.append(make_output_row(row))
 
         append_rows_to_csv(kept_rows, OUTPUT_FILE, OUTPUT_COLUMNS, write_header=(total_kept == 0))
-        append_rows_to_csv(trace_rows, TRACEABILITY_FILE, TRACEABILITY_COLUMNS, write_header=(total_kept == 0 and total_dropped == 0))
+        append_rows_to_csv(
+            trace_rows,
+            TRACEABILITY_FILE,
+            TRACEABILITY_COLUMNS,
+            write_header=(total_kept == 0 and total_dropped == 0),
+        )
         total_kept += len(kept_rows)
         total_dropped += len(trace_rows) - len(kept_rows)
 
     elapsed = time.time() - start
-
-    print(f"\nTiempo total (mixto): {elapsed:.2f} s")
+    print(f"\nTiempo total (mixto balanceado): {elapsed:.2f} s")
     print(f"Tiempo medio por PDF: {elapsed / max(1, len(sample)):.2f} s")
     print(f"Registros conservados: {total_kept}")
     print(f"Registros descartados: {total_dropped}")

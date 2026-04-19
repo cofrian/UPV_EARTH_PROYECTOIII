@@ -1,0 +1,284 @@
+doc_id,pb_folder,source_folder,filter_reason,language,language_confidence,abstract_length,clean_abstract_length,file_name
+aba2d0d4a8f9,1 - Climate Change,SDG13,language_low_confidence:0.55,en,0.55,2460,2460,Evaluation of extreme rainfall and temperature over North America in CanRCM4 and CRCM5.pdf
+6b7574b40a52,1 - Climate Change,SDG10,abstract_too_short<500,en,0.9999972927941492,187,187,A representation learning framework for detection and characterization of dead versus strain localization zones from pre- to post-failure.pdf
+84535222c154,1 - Climate Change,SDG12,abstract_too_short<500,en,0.9999965955826652,329,329,The world’s road to water scarcity_ shortage and stress in the 20th century and pathways towards sustainability.pdf
+a7b427c227f7,1 - Climate Change,SDG15,abstract_too_short<500,en,0.9999954858519532,233,233,A New Tool for Separating the Magnetic Mineralogy of Complex Mineral Assemblages from Low Temperature Magnetic Behavior.pdf
+d6963dd457eb,1 - Climate Change,SDG2,abstract_empty|language_unknown,,0.0,0,0,We need a sustainable consumption pattern.pdf
+d1ad08c326d1,1 - Climate Change,SDG4,abstract_too_short<500,en,0.9999961705506292,450,450,Introduction_ Rethinking History of Science in the Anthropocene.pdf
+ad58b1863c3b,1 - Climate Change,SDG14,abstract_too_short<500,en,0.9999984067374345,242,242,The performance of filtered leapfrog schemes in benchmark simulations.pdf
+7b24d831f546,1 - Climate Change,SDG4,abstract_too_short<500,en,0.9999954022644364,256,256,"Ingold, Tim. Anthropology and_as education. xii, 94 pp., bibliogr. London_ Routledge, 2018. £32.99 (paper).pdf"
+933573e12633,1 - Climate Change,No SDG,abstract_too_short<500|language_not_english:fr,fr,0.7142823152502882,241,241,Uncertainty assessment of climate change impacts on the hydrology of small prairie wetlands.pdf
+46749666b969,1 - Climate Change,SDG4,abstract_too_short<500,en,0.9999960260687236,325,325,Psychological Aspects of Building Environmental Consciousness.pdf
+6600bf4f6fb3,1 - Climate Change,SDG4,abstract_empty|language_unknown,,0.0,0,0,A Naturalist In The Great Lakes Region.pdf
+954647a50ef4,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999973386340072,374,374,"Climate change and trend analysis of temperature_ the case of Addis Ababa, Ethiopia.pdf"
+14f613c8493f,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999972935642868,226,226,Impact of climate change on snowpack in the Pyrenees_ Horizontal spatial variability and vertical gradients.pdf
+eb83d2386bd9,1 - Climate Change,SDG12,abstract_too_short<500,en,0.999995087365904,487,487,Terraform Sustainability Assessment Framework for Bioregenerative Life Support Systems.pdf
+f9e0a2ec0c6b,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999949934001376,281,281,Urban Growth and Climate Change.pdf
+b4accb5e5f62,1 - Climate Change,SDG4,abstract_too_short<500,en,0.9999977043372807,386,386,The Impact of Environmental Education on Environmental and Renewable Energy Technology Awareness_ Empirical Evidence from Colombia.pdf
+fd8c52c8b316,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999985372263064,295,295,Investigating ENSO and its teleconnections under climate change in an ensemble view – a new perspective.pdf
+a190f37c8f13,1 - Climate Change,SDG11,abstract_too_short<500,en,0.9999975408769752,465,465,The Game of Developers and Planners_ Ecosystem Services as a (Hidden) Regulation through Planning Delay Times.pdf
+4e0684e154b2,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999948591366744,236,236,Exposure of U.S. National Parks to land use and climate change 1900–2100.pdf
+affb8f72c787,1 - Climate Change,No SDG,abstract_too_short<500,en,0.9999989684064178,184,184,Optimal bioenergy power generation for climate change mitigation with or without carbon sequestration.pdf
+b0a263cd3ba1,1 - Climate Change,No SDG,abstract_too_short<500,en,0.999996267420223,308,308,Climate Change and Agriculture_ Subsistence Farmers’ Response to Extreme Heat.pdf
+9ee813335559,1 - Climate Change,SDG15,abstract_too_short<500,en,0.9999953070404304,251,251,"Planetary Boundaries for Biodiversity_ Implausible Science, Pernicious Policies.pdf"
+4b4bc108662d,1 - Climate Change,SDG14,abstract_too_short<500,en,0.9999944897976284,238,238,Bright polar mesospheric clouds formed by main engine exhaust from the space shuttle's final launch.pdf
+3f271659124f,1 - Climate Change,SDG13,abstract_empty|language_unknown,,0.0,0,0,Introduction to the special issue_ the phase I CORDEX RegCM4 hyper-matrix (CREMA) experiment.pdf
+04afe4f6af17,1 - Climate Change,SDG14,abstract_too_short<500,en,0.9999977081247304,448,448,Interannual oxygen isotope variability in Indian summer monsoon precipitation reflects changes in moisture sources.pdf
+0ce760b8977c,1 - Climate Change,SDG15,abstract_too_short<500,en,0.9999949609600768,234,234,Fungal hyphae develop where titanomagnetite inclusions reach the surface of basalt grains.pdf
+1eb4f31a2e80,1 - Climate Change,SDG13,abstract_too_short<500,en,0.9999953901348696,494,494,Direct climate effects of perennial bioenergy crops in the United States.pdf
+cd5dc96fa7e0,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999963281925992,476,476,Ocean acidification disrupts induced defences in the intertidal gastropodLittorina littorea.pdf
+126e9b870977,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999971013812528,254,254,Connectivity in grey reef sharks (Carcharhinus amblyrhynchos) determined using empirical and simulated genetic data.pdf
+1f05b7130bac,2 - Ocean Acidification,SDG14,abstract_too_short<500,en,0.9999969417256158,221,221,Chapter 1 Impacts of the Oceans on Climate Change.pdf
+c6e6f6ecfc86,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999998294755122,261,261,Globally consistent assessment of coastal eutrophication.pdf
+f588960af6bd,2 - Ocean Acidification,SDG2,abstract_too_short<500,en,0.9999964383172862,221,221,Is India’s largest fertilizer manufacturer misleading farmers and society using dubious plant and soil science_.pdf
+7c366a990ea8,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999945558415416,280,280,The microbial world in a changing environment.pdf
+0023049e5f55,2 - Ocean Acidification,SDG13,abstract_too_short<500|language_not_english:pt,pt,0.8571402002963844,314,314,"Chinese energy policy progress and challenges in the transition to low carbon development, 2006-2013.pdf"
+a64d1b2e2907,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999995305635702,381,381,Marine Fouling Characteristics of Biocomposites in a Coral Reef Ecosystem.pdf
+d62836f1d10e,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999952673187916,244,244,Sponges and Their Microbiomes Show Similar Community Metrics Across Impacted and Well-Preserved Reefs.pdf
+90ae5db54a05,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999966526069702,433,433,Ocean warming and acidification modify top-down and bottom-up control in a tropical seagrass ecosystem.pdf
+777fe0df0d19,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999968127167592,389,389,How the Pacific Oyster Responds to Ocean Acidification_ Development and Application of a Meta-Analysis Based Adverse Outcome Pathway.pdf
+400a9242188e,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999954601077096,226,226,Progressive seawater acidification on the Great Barrier Reef continental shelf.pdf
+e8357870459f,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999993844865488,234,234,Sub-Ocean_ Subsea Dissolved Methane Measurements Using an Embedded Laser Spectrometer Technology.pdf
+ac90d51f71f5,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999974627592187,321,321,Pan genome of the phytoplankton Emiliania underpins its global distribution.pdf
+7f1cc1191201,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999996623023605,236,236,"Recoverable impacts of ocean acidification on the tubeworm, Hydroides elegans_ implication for biofouling in future coastal oceans.pdf"
+81238fcbf4d9,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999996085030286,317,317,Coralporosis_ Ocean Acidification Leaves Deep-Sea Coral Reefs at Risk of Collapse.pdf
+be5a35464837,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999956081731964,499,499,"Quantifying the flux of CaCO3and organic carbon from the surface ocean using in situ measurements of O2, N2, pCO2, and pH.pdf"
+91cde811c531,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999974247013014,133,133,"Simulated Variation Characteristics of Oceanic CO2 Uptake, Surface Temperature, and Acidification in Zhejiang Province, China.pdf"
+85eb04da10de,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999995527860359,358,358,Growth rates of Florida corals from 1937 to 1996 and their response to climate change.pdf
+d7bb8f5c0844,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999996724705139,347,347,Balancing of Ocean Acidification by Superoxide Redox Chemistry_.pdf
+4178a4bf1251,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999967774102658,246,246,Oceanic eddy-induced modifications to air–sea heat and CO2 fluxes in the Brazil-Malvinas Confluence.pdf
+c47653a6cfc5,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999995224192752,263,263,The role of chitin-rich skeletal organic matrix on the crystallization of calcium carbonate in the crustose coralline alga Leptophytum foecundum.pdf
+7d2762020679,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999941574180662,374,374,Digestion in sea urchin larvae impaired under ocean acidification.pdf
+ca5d442d721d,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.8571413061686103,262,262,Socioeconomic prospects of a seaweed bioeconomy in Sweden.pdf
+1df1f5cae486,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.999997422284546,224,224,A coral-on-a-chip microfluidic platform enabling live-imaging microscopy of reef-building corals.pdf
+8cefb6c90d8e,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999941265825308,220,220,Early detection of anthropogenic climate change signals in the ocean interior.pdf
+4567e2dfe739,2 - Ocean Acidification,No SDG,abstract_too_short<500|language_not_english:it,it,0.5714281041231319,283,283,Abyssal oceanic circulation and acidification during the Middle Eocene Climatic Optimum (MECO).pdf
+cb43a80a452a,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999968546261186,234,234,Calcium carbonate alters the functional response of coastal sediments to eutrophication-induced acidification.pdf
+afea8402003b,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999971405707188,372,372,Anthropogenic carbon and ocean pH.pdf
+5e13ebf75fe0,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999956903461286,430,430,"Sustainability in Deep Water_ The Challenges of Climate Change, Human Pressures, and Biodiversity Conservation.pdf"
+b73b8dabd54d,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999952857437924,334,334,In vivo pH measurement at the site of calcification in an octocoral.pdf
+0a5e89b4ac5e,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999972100995386,253,253,Sustainable Solutions for Oyster Shell Waste Recycling in Thailand and the Philippines.pdf
+0c3a9cae44ab,2 - Ocean Acidification,No SDG,abstract_too_short<500,en,0.9999955690692256,414,414,"Moderate Increase in TCO2 Enhances Photosynthesis of Seagrass Zostera japonica, but Not Zostera marina_ Implications for Acidification Mitigation.pdf"
+64f0b7328e71,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999956840339554,210,210,From global to polycentric climate governance.pdf
+fe9dae092572,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500|language_not_english:de,de,0.7142814842974095,225,225,Global and Regional Greenhouse Gas Emissions Scenarios.pdf
+17d0c40b96aa,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.999993893435184,235,235,An investigation of the atmospheric sources and sinks of methyl bromide.pdf
+c18bdcc10586,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.999996536920808,337,337,US sifts ex-Nazi scientists for possible war criminals.pdf
+e594c165892c,3 - Stratospheric Ozone Depletion,No SDG,language_not_english:fr,fr,0.8571395488448335,2500,2500,Troposphere-to-stratosphere transport in the tropics.pdf
+c4fb799a37fd,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999959575176216,257,257,"Photoprotective and biotechnological potentials of cyanobacterial sheath pigment, scytonemin.pdf"
+8196435a6dda,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999958896251532,301,301,Seasonal changes in the transport of pollutants into the Arctic troposphere‐model study.pdf
+318e44e5d14f,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.999998774558466,231,231,The potential impact of changes in lower stratospheric water vapour on stratospheric temperatures over the past 30 years.pdf
+042a9073a4dc,3 - Stratospheric Ozone Depletion,SDG13,abstract_too_short<500|language_not_english:ro,ro,0.999993968500628,218,218,Anticipating Climate Impacts of Major Volcanic Eruptions.pdf
+99797683fbaf,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999981671591976,390,390,Nitrogen isotope ratio of atmospheric N2O as a key to the global cycle of N2O..pdf
+bcfb11da919d,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999956837233868,347,347,Reconciling modeled and observed temperature trends over Antarctica.pdf
+4652352bbbeb,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999975875489182,235,235,Modeling the lava heat flux during severe effusive volcanic eruption_ An important impact on surface air quality.pdf
+9cdd576a9db7,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999961109546638,492,492,Atmospheric chemistry and global change.pdf
+49aedaad82cd,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999980318261246,199,199,Correction for the 17O interference in δ(13C) measurements when analyzing CO2 with stable isotope mass spectrometry (IUPAC Technical Report).pdf
+9f6e25025973,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999955253647764,273,273,Effect of solar proton events on the middle atmosphere during the past two solar cycles as computed using a two‐dimensional model.pdf
+f90ebfdedc61,3 - Stratospheric Ozone Depletion,SDG14,abstract_too_short<500,en,0.9999971960679886,407,407,Rapid uplift of nonmethane hydrocarbons in a cold front over central Europe.pdf
+9c91fbd70056,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.999998206416128,292,292,LCA and economic evaluation of landfill leachate and gas technologies.pdf
+90d247dc188f,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999969128183877,340,340,A signal-to-noise paradox in climate science.pdf
+358f64b8021b,3 - Stratospheric Ozone Depletion,SDG14,abstract_too_short<500,en,0.999995593594317,466,466,Rapid increase in ozone-depleting chloroform emissions from China.pdf
+fe037d83e19a,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500|language_not_english:de,de,0.8571401115144384,397,397,Climate Change and Atmospheric Chemistry_ How Will the Stratospheric Ozone Layer Develop_.pdf
+8c0d7cfdd6ec,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999963071230752,143,143,Development of key indicators to quantify the health impacts of climate change on Canadians.pdf
+eaeffa13b4cd,3 - Stratospheric Ozone Depletion,No SDG,language_not_english:fr,fr,0.9999963890216256,2090,2090,Ultraviolet and visible spectroscopy and spaceborne remote sensing of the Earth's atmosphere.pdf
+b970161fa23b,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999948488451412,235,235,Relationship Between Weather Regimes and Atmospheric Rivers in East Antarctica.pdf
+f79b5d4e208a,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999979161704382,278,278,Stratospheric Final Warmings fall into two categories with different evolution over the course of the year.pdf
+de492b348258,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.999998206416128,292,292,Building national emission inventories for the energy sector_ Implications for life cycle assessment and nations environmental footprinting.pdf
+d35898400d5e,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999980435546192,458,458,Book Review.pdf
+da6ed57bcd49,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999962788615662,498,498,An Integrated System Dynamics Model and Life Cycle Assessment for Cement Production in South Africa.pdf
+78c7b26d8c6f,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999986163109084,305,305,"Smells, brains and hormones.pdf"
+e7048da28511,3 - Stratospheric Ozone Depletion,No SDG,abstract_too_short<500,en,0.9999961305765088,320,320,Life cycle environmental performance and improvement of a yogurt product delivery system.pdf
+085562a073da,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999941633030152,321,321,"Seasonal Dynamics of Methane and Carbon Dioxide Evasion From an Open System Pingo_ Lagoon Pingo, Svalbard.pdf"
+79a9f3bf75c1,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.999997511194478,255,255,Comparison of different methods to determine the degree of peat decomposition in peat bogs.pdf
+15553dccf58b,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999984624310818,353,353,Organic matter from Arctic sea-ice loss alters bacterial community structure and function.pdf
+97443cb4d1db,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999982421451176,403,403,"Depletion of oxygen, nitrate and nitrite in the Peruvian oxygen minimum zone cause an imbalance of benthic nitrogen fluxes.pdf"
+1b1615a2a91f,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999965101006612,317,317,Chars produced by slow pyrolysis and hydrothermal carbonization vary in carbon sequestration potential and greenhouse gases emissions.pdf
+8fec2b2edd2a,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.999996378121791,297,297,Long-Term Ecological Research and the Invisible Present.pdf
+410aff4dd954,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999962191430696,268,268,Anaerobic Methane Oxidation in a Landfill-Leachate Plume.pdf
+43d7b50de7d6,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999957106422676,356,356,Mechanisms of classical crystal growth theory explain quartz and silicate dissolution behavior.pdf
+8362b810b7e4,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999962524111404,361,361,Terrestrial denitrification_ challenges and opportunities.pdf
+a59af72ab39c,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999979728409918,307,307,"Chemoautotrophy at Deep-Sea Vents_ Past, Present, and Future.pdf"
+f52506a18b4b,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999959618281588,211,211,Use of non‐limiting substrates to increase size; a generic strategy to simultaneously optimize uptake and minimize predation in pelagic osmotrophs_.pdf
+695311e97f6c,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999974123752452,399,399,Productivity changes in the Mediterranean Sea for the twenty-first century in response to changes in the regional atmospheric forcing.pdf
+b2bd84106da9,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999958016567512,460,460,Phytoplankton Chytridiomycosis_ Fungal Parasites of Phytoplankton and Their Imprints on the Food Web Dynamics.pdf
+5b0090a41d47,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999967110350612,307,307,Around one third of current Arctic Ocean primary production sustained by rivers and coastal erosion.pdf
+e6e623fbbf1c,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999969863709284,355,355,"Mineral Ecology_ Surface Specific Colonization and Geochemical Drivers of Biofilm Accumulation, Composition, and Phylogeny.pdf"
+b5d5c4d199f7,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.999998213309505,460,460,"Phosphorus and iron cycling in deep saprolite, Luquillo Mountains, Puerto Rico.pdf"
+5a9dcdbf0366,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.999998206416128,292,292,Model-Based Interpretation of Groundwater Arsenic Mobility during in Situ Reductive Transformation of Ferrihydrite.pdf
+9251a65da6a7,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999958812869252,362,362,Biological solutions to transport network design.pdf
+02ab6af38434,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999977902539036,200,200,Benthic primary production and mineralization in a High Arctic fjord_ in situ assessments by aquatic eddy covariance.pdf
+6503ce87d55a,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999977946446792,297,297,Can Asian dust trigger phytoplankton blooms in the oligotrophic northern South China Sea_.pdf
+7f3ed0cf65ab,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999964183012326,387,387,Rhizosphere microorganisms can influence the timing of plant flowering.pdf
+359ad4b36ac3,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999983592328988,262,262,The Microbial Sulfur Cycle.pdf
+06db6cf1e2ff,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999969523643696,305,305,Meiofauna increases bacterial denitrification in marine sediments.pdf
+fc09be26e98d,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999970423346242,336,336,Developing Autonomous Observing Systems for Micronutrient Trace Metals.pdf
+a0a91348b4d5,4 - Biogeochemical Flows,SDG14,language_not_english:fr,fr,0.714283721432767,4290,4290,Flow variability near the Cape Verde frontal zone (subtropical Atlantic Ocean).pdf
+3bdcdd6c281e,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999988612391316,276,276,Anthropogenic perturbation of the carbon fluxes from land to ocean.pdf
+403d5070b0ce,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999966168762888,261,261,Numerical modelling of spatio-temporal variability of growth of Mytilus edulis (L.) and influence of its cultivation on ecosystem functioning.pdf
+ab94f4f2d71b,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999970980316024,379,379,"Climatic, edaphic, and biotic controls over storage and turnover of carbon in soils.pdf"
+8f8ac0a25366,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999946790193252,235,235,Remote Sensing of Submerged Aquatic Vegetation in a Shallow Non-Turbid River Using an Unmanned Aerial Vehicle.pdf
+c39c6a1aca29,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.999995595418766,330,330,Probing the active fraction of soil microbiomes using BONCAT-FACS.pdf
+91a2d94cacbc,4 - Biogeochemical Flows,No SDG,abstract_too_short<500,en,0.9999959454946252,235,235,δ15N and δ13C in the Mondego estuary food web_ Seasonal variation in producers and consumers.pdf
+8dd47750068a,4 - Biogeochemical Flows,No SDG,abstract_too_short<500|language_not_english:fr,fr,0.7142831346159298,364,364,Interpretations of Environmental Microbial Community Studies Are Biased by the Selected 16S rRNA (Gene) Amplicon Sequencing Pipeline.pdf
+f9fc8386bc0e,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999961253253102,256,256,Wild Ducks as Long-Distance Vectors of Highly Pathogenic Avian Influenza Virus (H5N1).pdf
+18fb46ee64f1,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999965900101552,364,364,DNA barcoding of Ghanaian fish species_ Status and prospects.pdf
+e4ada14572db,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999965464699117,250,250,"Thermal tolerances of Popenaias popeii (Texas hornshell) and its host fish from the Rio Grande Basin, Texas.pdf"
+eb167ca5bfb4,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999951344054544,235,235,Phylogeny and Molecular Evolution of the Green Algae.pdf
+f9bdea773f17,5 - Global Freshwater Use,SDG13,abstract_too_short<500,en,0.9999953388051572,341,341,"Special Volume No. 1, 2021_ The Global One Health Environment.pdf"
+57ada172ece4,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999967906133612,122,122,Geographic Variability of Sea-Level Change.pdf
+787b8edca955,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999967533852868,270,270,Evolution and Biodiversity_ the evolutionary basis of biodiversity and its potential for adaptation to global change.pdf
+3bbb2df8b102,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.999997744747394,245,245,A simple TOPMODEL‐based runoff parameterization (SIMTOP) for use in global climate models.pdf
+2d635b9a81d1,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999950638860904,220,220,Green method of stemming the tide of invasive marine and freshwater organisms by natural filtration of shipping ballast water.pdf
+6aaaa44f3c4a,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999953252280872,132,132,Assessing freshwater use impacts in LCA_ Part I—inventory modelling and characterisation factors for the main impact pathways.pdf
+28dff27f6410,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999966479165034,374,374,Environmental Impact Assessment of a 1 kW Proton-Exchange Membrane Fuel Cell_ A Mid-Point and End-Point Analysis.pdf
+5aa3c33afdcb,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999962063075458,329,329,"Global environmental change and health_ impacts, inequalities, and the health sector.pdf"
+a709c04bc666,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.999997897433233,410,410,A perspective on decadal climate variability and predictability.pdf
+8a2823b9fab5,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999968616042708,245,245,Increased food production and reduced water use through optimized crop distribution.pdf
+44cc5082ffbd,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999980855569846,380,380,Fast and sensitive taxonomic classification for metagenomics with Kaiju.pdf
+a2b25612ee6a,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999971242513236,255,255,Effectiveness of the global protected area network in representing species diversity.pdf
+c2a5ea6db845,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999949324302276,411,411,Horizontal Gene Exchange in Environmental Microbiota.pdf
+773f40ffd109,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999967061632128,314,314,Guiding principles for the development and application of solid-phase phosphorus adsorbents for freshwater ecosystems.pdf
+d1d5cb4c319b,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999962757717044,384,384,Ecogenomics and Taxonomy of Cyanobacteria Phylum.pdf
+59a7ffaba62e,5 - Global Freshwater Use,No SDG,abstract_empty|language_unknown,,0.0,0,0,The comap as a diagnostic tool for non-stationary kriging models.pdf
+23cc54a094d2,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999954129591204,235,235,Freshwater eels_ A symbol of the effects of global change.pdf
+d81fe63a0799,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999950489720836,317,317,The Genetic Diversity of Mesodinium and Associated Cryptophytes.pdf
+6aa9b457def6,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999958520044788,308,308,"Lactobacillus acidophilus and L. plantarum improve health status, modulate gut microbiota and innate immune response of marron (Cherax cainii).pdf"
+89a12ee175cc,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999957905810676,266,266,Novel DGT method with tri-metal oxide adsorbent for in situ spatiotemporal flux measurement of fluoride in waters and sediments.pdf
+6f4c467e9ad8,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999956115060764,249,249,"Synechococcus sp. Strain PCC 7002 Transcriptome_ Acclimation to Temperature, Salinity, Oxidative Stress, and Mixotrophic Growth Conditions.pdf"
+47599affd9a3,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999964247712928,242,242,Optimization of Urban Water Consumption in Residential Buildings.pdf
+4fdefa60d41a,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999980235475348,244,244,Characterization and comparison of fatty acyl Δ6 desaturase cDNAs from freshwater and marine teleost fish species.pdf
+c517330f8f5f,5 - Global Freshwater Use,SDG14,abstract_too_short<500,en,0.9999960450596164,240,240,Implications for behavior of volatile elements during impacts—Zinc and copper systematics in sediments from the Ries impact structure and central European tektites.pdf
+ecb6b56c8424,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999943460742444,233,233,"Past, Present, and Future Controls on Levels of Persistent Organic Pollutants in the Global Environment.pdf"
+050e2b1b9903,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999953857004168,223,223,Isotopic evidence for an intensified hydrological cycle in the Indian sector of the Southern Ocean.pdf
+7fbe82e1b450,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999972439984244,272,272,Food web de‐synchronization in England's largest lake_ an assessment based on multiple phenological metrics.pdf
+31e92cff473f,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999965680705878,283,283,Nanofluids effects on the evaporation rate in a solar still equipped with a heat exchanger.pdf
+ac4d4c00b01e,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999962350324516,237,237,RNA_DNA ratios as a proxy of egg production rates of Acartia.pdf
+b427a7866e09,5 - Global Freshwater Use,SDG13,abstract_too_short<500,en,0.9999966471860589,453,453,"Assessing the Human Health Benefits of Climate Mitigation, Pollution Prevention, and Biodiversity Preservation.pdf"
+524334066c0f,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999937466500136,332,332,"Application of Electrodialysis Desalination Technique of the Red Seawater to Utilize in Aquacultural, Industrial, Agricultural and Municipal Usages.pdf"
+02a522e9b109,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999955383023084,230,230,Siberian Lena River hydrologic regime and recent change.pdf
+17eb5f7826ad,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.999993844865488,234,234,N_P_Si nutrient export ratios and ecological consequences in coastal seas evaluated by the ICEP approach.pdf
+da95dfe229ec,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999968467885516,346,346,Internal secular variability in an ocean general circulation model.pdf
+31e6708474a8,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999954789164196,264,264,Atmospheric-methane source and sink sensitivity analysis using Gaussian process emulation.pdf
+0473ab551ece,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999959887935423,289,289,Analysis of global Aeromonas veronii genomes provides novel information on source of infection and virulence in human gastrointestinal diseases.pdf
+f3943744704f,5 - Global Freshwater Use,No SDG,abstract_empty|language_unknown,,0.0,0,0,Global-scale analysis of river flow alterations due to water withdrawals and reservoirs.pdf
+d77873e693e0,5 - Global Freshwater Use,No SDG,abstract_too_short<500,en,0.9999968690793593,296,296,The diversity of microbes_ resurgence of the phenotype.pdf
+6fa69e1a923c,5 - Global Freshwater Use,SDG14,abstract_too_short<500,en,0.9999975875489182,233,233,Eddy characteristics in the eastern South Pacific.pdf
+7b60a1d336e7,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999968650567856,422,422,Evaluation and Prediction of Ecosystem Service Value in the Zhoushan Islands Based on LUCC.pdf
+f10a65aa59ef,6 - Land System Change,No SDG,abstract_too_short<500,en,0.999996604307182,367,367,Food Production and Family Labour in Southern Malawi_ the Shire Highlands and Upper Shire Valley in the Early Colonial Period.pdf
+76040c456027,6 - Land System Change,No SDG,abstract_too_short<500,en,0.8571395250595459,220,220,A Study On The Land Use Plan Presented In The Masterplan Of Sapporo City And The Changes Of The Land Use Planning System Toward Its Realization.pdf
+fd982e924957,6 - Land System Change,SDG10,abstract_too_short<500,en,0.9999973844379962,446,446,The Philosophical Significance of Revolution_ Is a Revolution in Being Imaginable_.pdf
+61ec11abeb0a,6 - Land System Change,SDG7,abstract_too_short<500,en,0.9999962506975906,445,445,Power Management Strategy of Hybrid Electric Vehicles Based on Quadratic Performance Index.pdf
+ea23c0560274,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999962920457496,368,368,"Factor Prices and Technical Change in Agricultural Development_ The United States and Japan, 1880-1960.pdf"
+643e18eb55bd,6 - Land System Change,No SDG,abstract_empty|language_unknown,,0.0,0,0,Shaping the World Economy_ Suggestions for an International Economic Policy..pdf
+bdbe6da4e37a,6 - Land System Change,SDG7,abstract_too_short<500,en,0.9999946334413764,295,295,Large-scale transport of PM2.5 in the lower troposphere during winter cold surges in China.pdf
+5d9634f00745,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999972580776536,293,293,Income Distribution and Macroeconomics.pdf
+f4f9a0718907,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999984812634892,464,464,On the state dependency of the equilibrium climate sensitivity during the last 5 million years.pdf
+82e385db72bf,6 - Land System Change,No SDG,abstract_too_short<500,en,0.999997186205008,230,230,Declining Agricultural Productivity and Global Food Security.pdf
+5b7a27ac67c0,6 - Land System Change,No SDG,abstract_too_short<500,en,0.999998090762503,250,250,Ethnic-based federalism and ethnicity in Ethiopia_ reassessing the experiment after 20 years.pdf
+c19465a6f1e8,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999964928204516,296,296,"Neo-cadastres_ innovative solution for land users without state based land rights, or just reflections of institutional isomorphism_.pdf"
+103f9db9a18e,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999967066762848,390,390,"Identification of sensitive indicators to assess the interrelationship between soil quality, management practices and human health.pdf"
+b869164153cb,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999952965652033,241,241,The EU-FP7 ERA-CLIM2 Project Contribution to Advancing Science and Production of Earth System Climate Reanalyses.pdf
+dbd6c72cd37b,6 - Land System Change,SDG7,abstract_too_short<500,en,0.99999768239239,363,363,Seasonal Correction of Offshore Wind Energy Potential due to Air Density_ Case of the Iberian Peninsula.pdf
+8bcd8f4ff779,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999954284255834,349,349,Impacts of land tenure arrangements on the adaptive capacity of marginalized groups_ The case of Ghana’s Ejura Sekyedumase and Bongo districts.pdf
+b68bd4348e6d,6 - Land System Change,SDG11,abstract_too_short<500,en,0.9999962499000068,125,125,MM5 simulations of a SCOS97-NARSTO episode.pdf
+e739ae246a18,6 - Land System Change,No SDG,abstract_too_short<500,en,0.9999982859023976,452,452,Long-term trends of rainfall and runoff regime in upper Otava River basin.pdf
+ddca028d54b3,6 - Land System Change,No SDG,abstract_too_short<500,en,0.999997307152436,286,286,Ascophyllum nodosum Seaweed Extract Alleviates Drought Stress in Arabidopsis by Affecting Photosynthetic Performance and Related Gene Expression.pdf
+1710172c2f61,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999996269524334,447,447,Reports and Discussions.pdf
+1636c0614786,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999965100944148,335,335,"Island Studies Journal, 17(1), Book Reviews.pdf"
+58dfba08b23a,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999964451301367,236,236,Ethical perspectives on the environmental impact of property development.pdf
+32235b909983,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999979745913716,227,227,Glass_steel_clay interactions in a simulated radioactive waste geological disposal system.pdf
+349d47d7200e,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.8571408547214923,280,280,Balancing conservation and economic gain_ a dynamic programming approach.pdf
+9242f23ac59e,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999963038971804,333,333,"Animals, Relations, and the Laissez-Faire Intuition.pdf"
+d25743e1cada,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999997087458816,395,395,Environmental integration and multi-faceted international dimensions of EU law_ Unpacking the EUs 2009 climate and energy package.pdf
+c15e1dfb4289,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999966306309982,456,456,Disasters in ‘development’ contexts_ Contradictions and options for a preventive approach.pdf
+8544f57677e3,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999938692623316,308,308,Using Multispectral Images to Establish Land Categories.pdf
+30b2e975bd0f,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999971954842808,258,258,Die Zukunft der Endlagerung_ Was sind die Entwicklungen und Herausforderungen nach einer Standortentscheidung.pdf
+84b81c10fa22,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999969335770308,329,329,"Indigeneity, Colonial History and Truth.pdf"
+10076c772cc3,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999978898888248,124,124,Redefining the concept of security from the aspect of modern imigrations.pdf
+e034eae8c2fd,7 - Biosphere Integrity,No SDG,language_not_english:es,es,0.9999968426143446,2467,2467,Principles Of Higher Education Development In Works Of Russian Philosophers And Scientists Of 20th Century.pdf
+eb62900f32b4,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999969601237207,344,344,Preliminary thoughts on the application of thermodynamics to the development of sustainability criteria.pdf
+6393810c2b67,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999958564798856,271,271,"Phenomics for photosynthesis, growth and reflectance in Arabidopsis thaliana reveals circadian and long-term fluctuations in heritability.pdf"
+a4069cbc6d6b,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999996034165838,221,221,Seasonal Boundary Dynamics Of A Groundwater Surface Water Ecotone.pdf
+88b12ced90b6,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999976185984129,275,275,Is Sinology a Science_.pdf
+e0072bb7d4ce,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999947921105016,316,316,A tribute to Christian Körner for his 25 years of service on the Oecologia editorial board.pdf
+9cb166ac759f,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999965211275056,273,273,Disentangling the practice of landscape approaches_ a Q-method analysis on experiences in socio-ecological production landscapes and seascapes.pdf
+f6cd89379721,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999995085393305,335,335,The Significance of National Wildlife Refuges in the Development of U.S. Conservation Policy.pdf
+d0182fe4df8d,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999938692623316,308,308,Adverse Effects_ Thirteen Homeowners Near A Blasting Quarry Bought Out By Quarry Owner.pdf
+2d10a4fd4133,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999976839766752,366,366,Law and Aesthetics in the Anthropocene_ From the Rights of Nature to the Aesthesis of Obligations.pdf
+c42144103c2d,7 - Biosphere Integrity,No SDG,language_low_confidence:0.57,en,0.5714273067113057,644,644,"Climate Realism, Eco-dystopia and Aesthetic of Resilience in Maja Lunde's The End of the Ocean and Diane Cook's The New Wilderness.pdf"
+a0bf6d5dbb2a,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999973584069674,255,255,Survival of the fittest author.pdf
+0302916a14ee,7 - Biosphere Integrity,No SDG,language_not_english:fr,fr,0.5714287384516856,2017,2017,"Kakila database_ Towards a FAIR community approved database of cetacean presence in the waters of the Guadeloupe Archipelago, based on citizen science.pdf"
+f35c93e2c04f,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999979763781106,397,397,Some economic aspects of reducing americium production in a two-component system of thermal and fast reactors.pdf
+b2f5c867cc6d,7 - Biosphere Integrity,SDG13,abstract_too_short<500,en,0.9999979341355708,400,400,Innovations and limits in methods of forecasting global environmental change.pdf
+968a9ba9e0ee,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999982161590586,382,382,Ccs操業におけるモニタリング計画の課題と取り組み.pdf
+27172cdb1440,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999995347547134,294,294,"Rangelands of Band-e-Amir National Park and Ajar Provisional Wildlife Reserve, Afghanistan.pdf"
+505f55d5b5a2,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999974458211948,259,259,Phylogenetic diversity of microorganisms in subseafloor crustal fluids from Holes 1025C and 1026B along the Juan de Fuca Ridge flank.pdf
+ebaca027d7f6,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999964854613802,172,172,Development of rural areas in Ukraine through the prism of experience of developed countries_ ecological and social aspects.pdf
+c1a391e9f073,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999976256974944,364,364,"Benefits, challenges and opportunities of corporate sustainability.pdf"
+9704445f6028,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999952439013212,472,472,Integrated Multiscale Method for Obtaining Accurate Forest Surface Area Statistics over Large Areas.pdf
+3137c90f60c1,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999950714131364,289,289,"Evaluation of the Sustainable Development of Macau, Based on the BP Neural Network.pdf"
+96c79d6e43ba,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.8571408101242782,249,249,"Targeted metatranscriptomics of compost-derived consortia reveals a GH11 exerting an unusual exo-1,4-β-xylanase activity.pdf"
+31d4a72f9d6f,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.999997642489756,373,373,The role and significance of environmental safety in the system of ensuring the state’s economic security.pdf
+0f11125f1b80,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999948531559572,320,320,"A Large Drop in Atmospheric 14 C_ 12 C and Reduced Melting in the Younger Dryas, Documented with 230 Th Ages of Corals.pdf"
+5b0bb04b8553,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999956008468496,237,237,Implementation of the Strictliability Principle in Enforcement of Environmental Civil Case Laws and Settlement of Their Execution in Indonesia.pdf
+4b54d04b798a,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999955328690484,253,253,Assessing the Degree of Sustainability in Extractive Reserves in the Amazon Biome Using the Fuzzy Logic Tool for Decision Making.pdf
+970b02818e0e,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999953207177934,265,265,Tourism Village Management in Bali by Traditional Villages Based on Local Wisdom in the New Normal Era.pdf
+0f3423a69901,7 - Biosphere Integrity,No SDG,abstract_too_short<500|language_not_english:pt,pt,0.9999960752279614,165,165,Revista Completa.pdf
+ee5e8ed6aa50,7 - Biosphere Integrity,No SDG,abstract_too_short<500,en,0.9999949296485956,433,433,A Study on the Rationality of Land Use Change in the Dianchi Basin during the Last 40 Years under the Background of Lake Revolution.pdf
+e8ac38dcd4f6,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999980231623165,154,154,Text Classification Algorithms_ A Survey.pdf
+c3415cf6db6c,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999955919090986,295,295,Correction to_ Novel data augmentation for named entity recognition.pdf
+41ca068d9e38,8 - Novel Entities,SDG12,abstract_too_short<500,en,0.9999970745975688,490,490,_A Knowledge–Based Approach to Systematization of Life Processes_.pdf
+b6bf1ff131fa,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999982640443316,128,128,Knowledge Representation Learning with Contrastive Completion Coding.pdf
+60e5279a3bee,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999994868814426,362,362,"Molecular profiling and anti-infective potency of endophytic actinomycetes inhabiting Madhuca insignis Radlk., from Western Ghats of India.pdf"
+99f2cb07200d,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999944807289436,462,462,Gene editing using CRISPR_Cas9_ implications for dual-use and biosecurity.pdf
+4c59c898e3d7,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996696995732,264,264,Progressive Sarcopenia Correlates with Poor Response and Outcome to Immune Checkpoint Inhibitor Therapy.pdf
+fdbdf3a12b63,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996765067289,138,138,Knowledge Graph and Text Jointly Embedding.pdf
+7637b7f51c56,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999975806750632,364,364,Comparing neural models for nested and overlapping biomedical event detection.pdf
+0b7a68d1a06a,8 - Novel Entities,SDG13,abstract_too_short<500,en,0.9999964596094713,256,256,A diagnostic interface for the ICOsahedral Non-hydrostatic (ICON) modelling framework based on the Modular Earth Submodel System (MESSy v2.50).pdf
+762d789f17fe,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996387652526,446,446,The transcriptomes of novel marmoset monkey embryonic stem cell lines reflect distinct genomic features.pdf
+b9ff21016076,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999951000456816,420,420,Nuclear heparanase-1 activity suppresses melanoma progression via its DNA-binding affinity.pdf
+e55ca928cbd7,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999978912274758,122,122,Type-aware Embeddings for Multi-Hop Reasoning over Knowledge Graphs.pdf
+a2f98caf3a74,8 - Novel Entities,SDG2,abstract_too_short<500,en,0.9999950595275758,217,217,Development and evaluation of 4WSS electric-driven chassis for high-clearance sprayer.pdf
+e5bd843aed5a,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996860224331,411,411,Rapid Manufacturing And Rapid Tooling With Layer Manufacturing Lm Technologies State Of The Art And Future Perspectives.pdf
+ccf2d83e08c2,8 - Novel Entities,No SDG,language_not_english:ru,ru,0.999996246996997,5854,5854,Images of Buddhist entities in L. A. Yuzefovich’s novel Campaign to Bar-Khoto.pdf
+3cb26570b544,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999972559969592,274,274,"After Libra, Digital Yuan and COVID-19_ Central Bank Digital Currencies and the New World of Money and Payment Systems.pdf"
+6da3f80fe796,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999995995993805,278,278,Template-based protein structure modeling using the RaptorX web server.pdf
+85b595466109,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999949764942202,396,396,A novel deep learning approach to extract Chinese clinical entities for lung cancer screening and staging.pdf
+a5d0a8ddc174,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999970436616884,322,322,Learning to generate naturalistic utterances using reviews in spoken dialogue systems.pdf
+45fb5d5609c1,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999965048269824,254,254,Extracting Knowledge Entities from Sci-Tech Intelligence Resources Based on BiLSTM and Conditional Random Field.pdf
+fd3d6180c1cd,8 - Novel Entities,SDG15,abstract_too_short<500,en,0.9999953987834972,225,225,Impact of including the plume rise of vegetation fires in numerical simulations of associated atmospheric pollutants.pdf
+3cccc81ea50f,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999943417082752,333,333,Multimodal imaging features and genetic findings in Bietti crystalline dystrophy.pdf
+b9f4f32eb3b9,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999954761168216,355,355,Systematic pan-cancer analysis of tumour purity.pdf
+a3365d8ac9e9,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996127314009,121,121,Joint contrastive learning and belief rule base for named entity recognition in cybersecurity.pdf
+4f485a5ad1d1,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999947018195696,481,481,Duplication 8q12_ confirmation of a novel recognizable phenotype with duane retraction syndrome and developmental delay.pdf
+3eab23c34e54,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999996849975438,449,449,A Novel Key Generation Method for Group-Based Physically Unclonable Function Designs.pdf
+b2ed4e1b64dd,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999965421744682,446,446,Early repolarization associated with sudden death_ Insights from noninvasive electrocardiographic imaging.pdf
+fc13b3b382fa,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999966604435924,296,296,"The Ideal of the West, the Reality of the East. Towards a New Poetics of Ottoman Modernity in the Novels of _Edebiyat-ı Cedide_.pdf"
+f9349f2b4f80,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999974972096076,329,329,A Cybersecurity Knowledge Graph Completion Method for Penetration Testing.pdf
+1a7bf2089b16,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999973822062892,457,457,Improving the Road and Traffic Control Prediction Based on Fuzzy Logic Approach in Multiple Intersections.pdf
+09bad8f047e3,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.9999978381968712,184,184,"Scalable, efficient, and secure RFID with elliptic curve cryptosystem for Internet of Things in healthcare environment.pdf"
+a550f5974272,8 - Novel Entities,No SDG,abstract_too_short<500,en,0.999997484857014,414,414,Click chemical assembly and validation of bio-functionalized superparamagnetic hybrid microspheres.pdf
+689372350daa,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.999997507433844,195,195,Aerosol sources and their contribution to the chemical composition of aerosols in the Eastern Mediterranean Sea during summertime.pdf
+630e24e42dc7,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999948865507032,276,276,Recurring flood distribution patterns related to short-term Holocene climatic variability.pdf
+da7147677c12,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999957851645056,316,316,Indoor air pollution due to emissions from wood-burning stoves.pdf
+5288a6ad8f03,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.999993844865488,235,235,Simulation of aerosol radiative effects over West Africa during DABEX and AMMA SOP-0.pdf
+4b96efefd843,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999951196565712,190,190,Characterization and Source Apportionment of PM2.5 in an Urban Environment in Beijing.pdf
+6be8780431da,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.999997526314796,338,338,Aerosol absorption has an underappreciated role in historical precipitation change.pdf
+ac5a4d8cbacd,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999952905041792,372,372,Satellite observations of terrestrial water storage provide early warning information about drought and fire season severity in the Amazon.pdf
+a5526d027d7f,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999952865629544,281,281,First long-term study of particle number size distributions and new particle formation events of regional aerosol in the North China Plain.pdf
+9b6460ca5410,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.999998165690826,384,384,Analysis of Four Years of Global XCO2 Anomalies as Seen by Orbiting Carbon Observatory-2.pdf
+00cc28feaf04,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.99999790928602,386,386,LIDAR obstacle warning and avoidance system for unmanned aerial vehicle sense-and-avoid.pdf
+a5169d3f2cc3,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999959244532568,249,249,Protection against inhaled oxidants through scavenging of oxidized lipids by macrophage receptors MARCO and SR-AI_II.pdf
+9dc90dff731e,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999969248758478,220,220,Seasonal variability of aerosol concentration and size distribution in Cape Verde using a continuous aerosol optical spectrometer.pdf
+b91ed4d396c6,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999963573951988,355,355,"Magma volume, volatile emissions, and stratospheric aerosols from the 1815 eruption of Tambora.pdf"
+5ff6f8d3fec5,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999969509766018,440,440,Comparison and complementary use of in situ and remote sensing aerosol measurements in the Athens Metropolitan Area.pdf
+74048503ff8c,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999953598286562,235,235,Trends in the nonvolcanic component of stratospheric aerosol over the period 1971–2004.pdf
+d4485b984b10,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999957163522116,262,262,Calibrated digital images of Campbell–Stokes recorder card archives for direct solar irradiance studies.pdf
+1619f3546fa8,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999967905959511,335,335,"Scattering matrices of volcanic ash particles of Mount St. Helens, Redoubt, and Mount Spurr Volcanoes.pdf"
+6cb3f2170843,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999958794359723,414,414,Unrealistically pristine air in the Arctic produced by current global scale models.pdf
+f17d3a54912a,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999978518939164,385,385,Methyl halide emissions from savanna fires in southern Africa.pdf
+a1fdf805cdae,9 - Atmospheric Aerosol Loading,No SDG,language_low_confidence:0.57,en,0.5714271488618973,1103,1103,Is PIXE still a useful technique for the analysis of atmospheric aerosols_ The LABEC experience.pdf
+6a89c80a24f8,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999953070404304,235,235,Satellite climatology of African dust transport in the Mediterranean atmosphere.pdf
+a2d7c6427ea6,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999967911131676,261,261,Atmospheric nitrous acid (HONO) at a rural coastal site in North China_ Seasonal variations and effects of biomass burning.pdf
+ea1c763936e6,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999970604449409,178,178,A Simplified and Robust Surface Reflectance Estimation Method (SREM) for Use over Diverse Land Surfaces Using Multi-Sensor Data.pdf
+bd9f05de8774,9 - Atmospheric Aerosol Loading,No SDG,abstract_too_short<500,en,0.9999955207714756,242,242,"Origin of dimethylsulfide, non‐sea‐salt sulfate, and methanesulfonic acid in eastern Antarctica.pdf"
