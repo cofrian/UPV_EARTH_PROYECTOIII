@@ -1,0 +1,91 @@
+pb_folder,term,tfidf_mean
+1 - Climate Change,climate,0.07422583311688302
+1 - Climate Change,change,0.05547202657355353
+1 - Climate Change,ocean,0.021631832570244647
+1 - Climate Change,urban,0.021216005981936157
+1 - Climate Change,food,0.0209887281481029
+1 - Climate Change,social,0.020461765968073222
+1 - Climate Change,changes,0.019953134052024396
+1 - Climate Change,cities,0.019193779044798794
+1 - Climate Change,temperature,0.018778185552040895
+1 - Climate Change,global,0.017725543442248495
+2 - Ocean Acidification,ocean,0.058243566157259626
+2 - Ocean Acidification,marine,0.05339101339195347
+2 - Ocean Acidification,acidification,0.053139725485595306
+2 - Ocean Acidification,coral,0.044098061240857814
+2 - Ocean Acidification,reef,0.042028267445023255
+2 - Ocean Acidification,species,0.03321588918485902
+2 - Ocean Acidification,reefs,0.02731731574706705
+2 - Ocean Acidification,climate,0.025521006199645615
+2 - Ocean Acidification,change,0.02408804349624117
+2 - Ocean Acidification,sea,0.02306289591659725
+3 - Stratospheric Ozone Depletion,ozone,0.11827239311548321
+3 - Stratospheric Ozone Depletion,stratospheric,0.031558934106643344
+3 - Stratospheric Ozone Depletion,emissions,0.03053697824069751
+3 - Stratospheric Ozone Depletion,atmospheric,0.030232258103225485
+3 - Stratospheric Ozone Depletion,air,0.02825601099757205
+3 - Stratospheric Ozone Depletion,stratosphere,0.027136111037462902
+3 - Stratospheric Ozone Depletion,global,0.02486100031426968
+3 - Stratospheric Ozone Depletion,chemistry,0.024813957740062197
+3 - Stratospheric Ozone Depletion,transport,0.023559943545129133
+3 - Stratospheric Ozone Depletion,changes,0.023192835197968425
+4 - Biogeochemical Flows,ocean,0.039453965530274714
+4 - Biogeochemical Flows,water,0.03365953889866593
+4 - Biogeochemical Flows,biogeochemical,0.028943956160533788
+4 - Biogeochemical Flows,nitrate,0.02807170909895457
+4 - Biogeochemical Flows,carbon,0.027602480090784358
+4 - Biogeochemical Flows,soil,0.024225754311161585
+4 - Biogeochemical Flows,nutrient,0.023160365040731153
+4 - Biogeochemical Flows,organic,0.021594732855432435
+4 - Biogeochemical Flows,sediment,0.02044686110651712
+4 - Biogeochemical Flows,subsurface,0.02011522444281523
+5 - Global Freshwater Use,water,0.06213180282335572
+5 - Global Freshwater Use,freshwater,0.04780850514915118
+5 - Global Freshwater Use,global,0.03372305382098521
+5 - Global Freshwater Use,ice,0.03207290397096483
+5 - Global Freshwater Use,sea,0.02193153290641607
+5 - Global Freshwater Use,climate,0.019545934384109478
+5 - Global Freshwater Use,rivers,0.018729960975840693
+5 - Global Freshwater Use,river,0.018265831270787312
+5 - Global Freshwater Use,ecosystems,0.01824815478630188
+5 - Global Freshwater Use,species,0.018021886866852313
+6 - Land System Change,land,0.08057290949271455
+6 - Land System Change,cover,0.03922285230625271
+6 - Land System Change,use,0.03618445302521165
+6 - Land System Change,change,0.030694544822187156
+6 - Land System Change,soil,0.030322736747185032
+6 - Land System Change,forest,0.029358382758396053
+6 - Land System Change,water,0.025736681103260634
+6 - Land System Change,changes,0.025272098066215925
+6 - Land System Change,areas,0.02446106912800257
+6 - Land System Change,systems,0.023987831623663424
+7 - Biosphere Integrity,sustainability,0.04107545005957815
+7 - Biosphere Integrity,environmental,0.036467585195024674
+7 - Biosphere Integrity,forest,0.03136770107717843
+7 - Biosphere Integrity,human,0.027712801717661602
+7 - Biosphere Integrity,ecological,0.02760533167701342
+7 - Biosphere Integrity,management,0.025421531771284905
+7 - Biosphere Integrity,conservation,0.024686269729138455
+7 - Biosphere Integrity,waste,0.024011359660907994
+7 - Biosphere Integrity,species,0.023913665881844775
+7 - Biosphere Integrity,development,0.023771010542710965
+8 - Novel Entities,novel,0.04719588695572986
+8 - Novel Entities,entities,0.039112093620225045
+8 - Novel Entities,entity,0.03515393743993688
+8 - Novel Entities,information,0.025323251481587223
+8 - Novel Entities,patients,0.02169590819422088
+8 - Novel Entities,global,0.01654088978582188
+8 - Novel Entities,learning,0.016525812602288685
+8 - Novel Entities,propose,0.016485317076737033
+8 - Novel Entities,set,0.016450574839835606
+8 - Novel Entities,drug,0.016324865438000498
+9 - Atmospheric Aerosol Loading,aerosol,0.1388947531137328
+9 - Atmospheric Aerosol Loading,cloud,0.06190648149315401
+9 - Atmospheric Aerosol Loading,dust,0.04776922445248032
+9 - Atmospheric Aerosol Loading,particles,0.044560561543237565
+9 - Atmospheric Aerosol Loading,mass,0.03886236773467033
+9 - Atmospheric Aerosol Loading,organic,0.031455473491950596
+9 - Atmospheric Aerosol Loading,atmospheric,0.02956695361918556
+9 - Atmospheric Aerosol Loading,carbon,0.028810374121595216
+9 - Atmospheric Aerosol Loading,particle,0.02777465726872512
+9 - Atmospheric Aerosol Loading,radiative,0.027643948336065132

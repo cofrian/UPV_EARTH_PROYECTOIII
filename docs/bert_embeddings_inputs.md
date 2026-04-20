@@ -37,5 +37,5 @@ Estado validado en esta sesión:
 ## Otros CSV de contexto
 
 - [data/corpus/master_corpus_mixto_1000_traceability.csv](../data/corpus/master_corpus_mixto_1000_traceability.csv): auditoría de filtros (kept/dropped), no es input de embeddings.
-- [docs/eda/top_unigrams.csv](top_unigrams.csv) y [docs/eda/top_bigrams.csv](top_bigrams.csv): salidas EDA para interpretación temática.
-- [docs/eda/semantic_topic_clusters.csv](semantic_topic_clusters.csv): salida de agrupación semántica, útil para análisis posterior, no para generar embeddings base.
+- [docs/eda/top_unigrams.csv](eda/top_unigrams.csv) y [docs/eda/top_bigrams.csv](eda/top_bigrams.csv): salidas EDA para interpretación temática.
+- [docs/eda/semantic_topic_clusters.csv](eda/semantic_topic_clusters.csv): salida de agrupación semántica, útil para análisis posterior, no para generar embeddings base.

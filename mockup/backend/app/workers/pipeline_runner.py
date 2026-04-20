@@ -1,11 +1,13 @@
 import uuid
+from pathlib import Path
 
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.repositories.job_repository import JobRepository
 from app.services.abstract_extraction.service import detect_abstract
 from app.services.metadata_extraction.service import infer_year
-from app.services.pb_inference.llm_service import run_gemma_pb_assessment
+from app.services.pb_inference.llm_service import run_llm_pb_assessment
 from app.services.pb_inference.service import infer_pb_scores
 from app.services.pdf_ingestion.service import extract_text_from_pdf
 from app.services.summarization.service import summarize_abstract
@@ -40,7 +42,7 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
         jobs.add_event(job.id, "pb_scoring", {"top_pb_code": pb.get("top_pb_code"), **collect_system_metrics()})
 
         jobs.update_job(job, status="inferencing", stage="llm_reasoning", progress_pct=78)
-        llm_result = run_gemma_pb_assessment(clean)
+        llm_result = run_llm_pb_assessment(clean)
         jobs.add_event(
             job.id,
             "llm_reasoning",
@@ -49,7 +51,7 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
                 "assigned_count": len(llm_result.get("assigned_pbs", [])),
                 "assigned_pb_codes": llm_result.get("assigned_pb_codes", []),
                 "duration_sec": llm_result.get("duration_sec", 0.0),
-                "ollama_model": "gemma4:26b",
+                "ollama_model": settings.ollama_model_name,
                 **collect_system_metrics(),
             },
         )
@@ -71,7 +73,8 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
             keywords=None,
             journal=None,
             language="en",
-            pdf_path=pdf_path,
+            # No persistimos la ruta física del upload para evitar retención innecesaria.
+            pdf_path=None,
         )
         jobs.attach_paper_to_job(job, paper.id)
 
@@ -86,9 +89,9 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
             explanation_text=(
                 f"{pb['explanation_text']} "
                 f"Resumen: {summary} "
-                f"Gemma reasoning: {llm_result.get('reasoning_process', '')} "
-                f"Gemma assigned_pb_codes: {llm_result.get('assigned_pb_codes', [])} "
-                f"Gemma assigned_pbs: {llm_result.get('assigned_pbs', [])}"
+                f"LLM reasoning: {llm_result.get('reasoning_process', '')} "
+                f"LLM assigned_pb_codes: {llm_result.get('assigned_pb_codes', [])} "
+                f"LLM assigned_pbs: {llm_result.get('assigned_pbs', [])}"
             ),
         )
 
@@ -104,3 +107,13 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
             error_code="PIPELINE_ERROR",
             error_message=str(exc),
         )
+    finally:
+        # Limpieza del fichero subido: el mockup no debe retener PDFs en disco.
+        try:
+            upload_path = Path(pdf_path)
+            if upload_path.exists():
+                upload_path.unlink()
+                jobs.add_event(job.id, "cleanup_upload", {"deleted": str(upload_path), **collect_system_metrics()})
+        except Exception:
+            # Evitamos tumbar el job por un fallo de limpieza.
+            pass

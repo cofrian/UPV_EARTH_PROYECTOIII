@@ -10,12 +10,11 @@ async function Kpis() {
     ["Papers totales", data.total_papers],
     ["Abstracts validos", data.abstracts_valid],
     ["Clasificados PB", data.papers_classified],
-    ["Journals unicos", data.unique_journals],
     ["Longitud media abstract", Math.round(data.avg_abstract_length)],
   ];
 
   return (
-    <section className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+    <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       {items.map(([label, value]) => (
         <article key={label as string} className="card">
           <p className="muted text-sm">{label as string}</p>
@@ -30,10 +29,12 @@ async function DistCard({
   title,
   path,
   chart,
+  className,
 }: {
   title: string;
   path: string;
   chart: "bar" | "line" | "pie";
+  className?: string;
 }) {
   const data = await apiGet<DistributionResponse>(path);
   const effectiveChart = path === "/analytics/distribution/year" && data.items.length <= 2 ? "bar" : chart;
@@ -48,7 +49,7 @@ async function DistCard({
     );
 
   return (
-    <article className="card">
+    <article className={`card ${className ?? ""}`}>
       <h3 className="mb-3 text-lg font-semibold">{title}</h3>
       {chartNode}
     </article>
@@ -158,7 +159,12 @@ export default async function DashboardPage({
       <section className="grid gap-4 lg:grid-cols-2">
         <DistCard title="Distribucion por Planetary Boundary" path="/analytics/distribution/pb" chart="pie" />
         <DistCard title="Publicaciones por anio" path="/analytics/distribution/year" chart="line" />
-        <DistCard title="Longitud de abstracts" path="/analytics/distribution/abstract-length" chart="bar" />
+        <DistCard
+          title="Longitud de abstracts"
+          path="/analytics/distribution/abstract-length"
+          chart="bar"
+          className="lg:col-span-2 lg:mx-auto lg:max-w-3xl w-full"
+        />
         <KeywordsCard />
         <PbFocusCard pbFocus={pbFocus} />
         <PapersQuickView />

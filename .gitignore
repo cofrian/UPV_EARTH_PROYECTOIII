@@ -45,5 +45,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Datos locales
-/data/
 /muestra_pdfs/

@@ -3,11 +3,13 @@ import uuid
 from collections import Counter
 from datetime import datetime
 
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from app.db.models.paper import Paper
 from app.db.models.pb_result import PBResult
+
+EXCLUDED_SOURCES = {"uploaded_pdf"}
 
 
 def _normalize_source_label(source: str | None) -> str:
@@ -23,12 +25,35 @@ def _normalize_source_label(source: str | None) -> str:
     return mapping.get(key, source)
 
 
+def _papers_base_query(db: Session):
+    source_norm = func.lower(func.trim(func.coalesce(Paper.source, "")))
+    return db.query(Paper).filter(
+        ~or_(
+            source_norm.in_(EXCLUDED_SOURCES),
+            Paper.doc_id.like("upload-%"),
+        )
+    )
+
+
 def overview(db: Session) -> dict:
-    total_papers = db.query(func.count(Paper.id)).scalar() or 0
-    abstracts_valid = db.query(func.count(Paper.id)).filter(func.length(Paper.abstract_norm) > 0).scalar() or 0
-    papers_classified = db.query(func.count(PBResult.id)).scalar() or 0
-    unique_journals = db.query(func.count(func.distinct(Paper.journal))).scalar() or 0
-    avg_abstract_length = db.query(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
+    paper_q = _papers_base_query(db)
+    total_papers = paper_q.with_entities(func.count(Paper.id)).scalar() or 0
+    abstracts_valid = paper_q.filter(func.length(Paper.abstract_norm) > 0).with_entities(func.count(Paper.id)).scalar() or 0
+    papers_classified = (
+        # Mantenemos consistente el filtro con el resto del dashboard.
+        db.query(func.count(PBResult.id))
+        .join(Paper, PBResult.paper_id == Paper.id)
+        .filter(
+            ~or_(
+                func.lower(func.trim(func.coalesce(Paper.source, ""))).in_(EXCLUDED_SOURCES),
+                Paper.doc_id.like("upload-%"),
+            )
+        )
+        .scalar()
+        or 0
+    )
+    unique_journals = paper_q.with_entities(func.count(func.distinct(Paper.journal))).scalar() or 0
+    avg_abstract_length = paper_q.with_entities(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
 
     return {
         "total_papers": int(total_papers),
@@ -42,7 +67,7 @@ def overview(db: Session) -> dict:
 def distribution_by_year(db: Session) -> list[dict]:
     max_dashboard_year = min(2024, datetime.now().year)
     rows = (
-        db.query(Paper.year, func.count(Paper.id))
+        _papers_base_query(db).with_entities(Paper.year, func.count(Paper.id))
         .filter(Paper.year.isnot(None))
         .filter(Paper.year.between(1900, max_dashboard_year))
         .group_by(Paper.year)
@@ -55,6 +80,8 @@ def distribution_by_year(db: Session) -> list[dict]:
 def distribution_by_pb(db: Session) -> list[dict]:
     rows = (
         db.query(PBResult.top_pb_code, func.count(PBResult.id))
+        .join(Paper, PBResult.paper_id == Paper.id)
+        .filter(or_(Paper.source.is_(None), ~func.lower(Paper.source).in_(EXCLUDED_SOURCES)))
         .group_by(PBResult.top_pb_code)
         .order_by(func.count(PBResult.id).desc())
         .all()
@@ -64,7 +91,7 @@ def distribution_by_pb(db: Session) -> list[dict]:
 
 def distribution_by_source(db: Session) -> list[dict]:
     rows = (
-        db.query(Paper.source, func.count(Paper.id))
+        _papers_base_query(db).with_entities(Paper.source, func.count(Paper.id))
         .filter(Paper.source.isnot(None))
         .group_by(Paper.source)
         .order_by(func.count(Paper.id).desc())
@@ -92,8 +119,9 @@ def distribution_by_abstract_length(db: Session) -> list[dict]:
     result: list[dict] = []
     for low, high, label in bins:
         count = (
-            db.query(func.count(Paper.id))
+            _papers_base_query(db)
             .filter(func.length(Paper.abstract_norm).between(low, high))
+            .with_entities(func.count(Paper.id))
             .scalar()
             or 0
         )
@@ -118,14 +146,14 @@ def _keyword_counter(papers: list[Paper]) -> Counter:
 
 
 def top_keywords_global(db: Session, limit: int = 20) -> list[dict]:
-    papers = db.query(Paper).all()
+    papers = _papers_base_query(db).all()
     counts = _keyword_counter(papers)
     return [{"keyword": keyword, "value": value} for keyword, value in counts.most_common(limit)]
 
 
 def top_keywords_by_pb(db: Session, pb_code: str, limit: int = 20) -> list[dict]:
     papers = (
-        db.query(Paper)
+        _papers_base_query(db)
         .join(PBResult, PBResult.paper_id == Paper.id)
         .filter(PBResult.top_pb_code == pb_code)
         .all()
@@ -148,12 +176,13 @@ def paper_comparison(db: Session, paper_id: uuid.UUID) -> dict | None:
     top_pb = pb_result.top_pb_code if pb_result else "PB-UNK"
 
     paper_length = len(paper.abstract_norm or "")
-    global_avg_length = db.query(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
+    global_avg_length = _papers_base_query(db).with_entities(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
 
     pb_avg_length = (
-        db.query(func.avg(func.length(Paper.abstract_norm)))
+        _papers_base_query(db)
         .join(PBResult, PBResult.paper_id == Paper.id)
         .filter(PBResult.top_pb_code == top_pb)
+        .with_entities(func.avg(func.length(Paper.abstract_norm)))
         .scalar()
         or 0.0
     )

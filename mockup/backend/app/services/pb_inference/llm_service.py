@@ -33,13 +33,15 @@ Your task is to find the PB with the HIGHEST conceptual similarity to the abstra
 {pb_rules}
 
 ### ABSTRACT TO EVALUATE:
-\"{abstract_text}\"
+<text>
+{abstract_text}
+</text>
 
 ### INSTRUCTIONS:
 Step 1: Concept Extraction. Identify the core scientific concepts, phenomena, or metrics in the abstract.
 Step 2: Similarity Matching. Compare these concepts against the Core Definition and Activation Logic of each PB. Select the PB(s) with the strongest scientific overlap.
 Step 3: Exclusion Check. Apply the EXCLUSION RULE. If the rule is explicitly violated, the PB MUST be discarded.
-Step 4: Output the final decision in JSON format EXACTLY as follows. You must include a \"confidence\" score (High, Medium, or Low) evaluating how strong the match is.
+Step 4: Output the final decision in JSON format EXACTLY as follows. You must include a \"confidence\" score (High, Medium, or Low) evaluating how strong the match is. Return ONLY valid JSON, without any markdown formatting or extra text.
 
 {{
     \"reasoning_process\": \"Analyze the similarity and evaluate the exclusion rules to justify your decision.\",
@@ -59,7 +61,12 @@ def parse_llm_output(raw_text: str) -> dict:
     start_idx = raw_text.find("{")
     end_idx = raw_text.rfind("}")
     if start_idx == -1 or end_idx == -1:
-        return {"reasoning_process": "No se encontro JSON valido en la salida de Gemma.", "assigned_pbs": []}
+        return {
+            "reasoning_process": (
+                f"No se encontro JSON valido en la salida del modelo {settings.ollama_model_name}."
+            ),
+            "assigned_pbs": [],
+        }
 
     try:
         payload = json.loads(raw_text[start_idx : end_idx + 1])
@@ -68,10 +75,13 @@ def parse_llm_output(raw_text: str) -> dict:
             "assigned_pbs": payload.get("assigned_pbs", []),
         }
     except json.JSONDecodeError:
-        return {"reasoning_process": "Salida JSON invalida en Gemma.", "assigned_pbs": []}
+        return {
+            "reasoning_process": f"Salida JSON invalida en {settings.ollama_model_name}.",
+            "assigned_pbs": [],
+        }
 
 
-def run_gemma_pb_assessment(abstract_text: str) -> dict:
+def run_llm_pb_assessment(abstract_text: str) -> dict:
     if not settings.llm_enabled:
         return {
             "enabled": False,
@@ -86,6 +96,7 @@ def run_gemma_pb_assessment(abstract_text: str) -> dict:
     payload = {
         "model": settings.ollama_model_name,
         "prompt": prompt,
+        "format": "json",
         "stream": False,
         "options": {
             "temperature": settings.llm_temperature,
@@ -113,7 +124,7 @@ def run_gemma_pb_assessment(abstract_text: str) -> dict:
     except Exception as exc:
         return {
             "enabled": True,
-            "reasoning_process": f"Error ejecutando Gemma: {exc}",
+            "reasoning_process": f"Error ejecutando {settings.ollama_model_name}: {exc}",
             "assigned_pbs": [],
             "assigned_pb_codes": [],
             "duration_sec": 0.0,

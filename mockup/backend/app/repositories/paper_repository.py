@@ -1,10 +1,13 @@
 import uuid
 
-from sqlalchemy import desc, func
+from sqlalchemy import desc, func, or_
 from sqlalchemy.orm import Session
 
 from app.db.models.paper import Paper
 from app.db.models.pb_result import PBResult
+
+HIDDEN_DOC_IDS = {"b39624d6c38a"}
+HIDDEN_TITLE_PATTERNS = ("%chapter 34 the role of hydrological modelling uncertainties%",)
 
 
 class PaperRepository:
@@ -24,7 +27,16 @@ class PaperRepository:
         page: int,
         page_size: int,
     ) -> tuple[list[Paper], int]:
-        q = self.db.query(Paper)
+        source_norm = func.lower(func.trim(func.coalesce(Paper.source, "")))
+        title_norm = func.lower(func.trim(func.coalesce(Paper.title, "")))
+        q = self.db.query(Paper).filter(
+            ~or_(
+                source_norm == "uploaded_pdf",
+                Paper.doc_id.like("upload-%"),
+                Paper.doc_id.in_(HIDDEN_DOC_IDS),
+                *[title_norm.like(pattern) for pattern in HIDDEN_TITLE_PATTERNS],
+            )
+        )
 
         if query:
             like_query = f"%{query.lower()}%"

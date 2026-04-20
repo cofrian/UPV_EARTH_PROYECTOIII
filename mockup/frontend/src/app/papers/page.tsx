@@ -3,6 +3,16 @@ import Link from "next/link";
 import { apiGet } from "@/lib/api";
 import { PaperListResponse } from "@/lib/types";
 
+const HIDDEN_DOC_IDS = new Set(["b39624d6c38a"]);
+const HIDDEN_TITLE_PATTERNS = ["chapter 34 the role of hydrological modelling uncertainties"];
+
+function isHiddenPaper(docId: string | null, title: string): boolean {
+  const docKey = (docId || "").trim().toLowerCase();
+  const titleKey = (title || "").trim().toLowerCase();
+  if (HIDDEN_DOC_IDS.has(docKey)) return true;
+  return HIDDEN_TITLE_PATTERNS.some((pattern) => titleKey.includes(pattern));
+}
+
 export default async function PapersPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const params = await searchParams;
   const query = typeof params.query === "string" ? params.query : "";
@@ -18,6 +28,9 @@ export default async function PapersPage({ searchParams }: { searchParams: Promi
   qs.set("page_size", "20");
 
   const data = await apiGet<PaperListResponse>(`/papers?${qs.toString()}`);
+  const visibleItems = data.items.filter((paper) => !isHiddenPaper(paper.doc_id, paper.title));
+  const hiddenInPage = data.items.length - visibleItems.length;
+  const visibleTotal = Math.max(0, data.total - hiddenInPage);
 
   return (
     <div className="space-y-5">
@@ -45,7 +58,7 @@ export default async function PapersPage({ searchParams }: { searchParams: Promi
             </tr>
           </thead>
           <tbody>
-            {data.items.map((paper) => (
+            {visibleItems.map((paper) => (
               <tr key={paper.id} className="border-b border-line/60">
                 <td className="px-3 py-3">{paper.title}</td>
                 <td className="px-3 py-3">{paper.year ?? "-"}</td>
@@ -62,7 +75,7 @@ export default async function PapersPage({ searchParams }: { searchParams: Promi
         </table>
       </section>
 
-      <p className="muted">Total resultados: {data.total}</p>
+      <p className="muted">Total resultados: {visibleTotal}</p>
     </div>
   );
 }

@@ -1,0 +1,37 @@
+pb_a,pb_b,similarity
+4 - Biogeochemical Flows,5 - Global Freshwater Use,0.6278333100530434
+1 - Climate Change,6 - Land System Change,0.6000614905245316
+1 - Climate Change,5 - Global Freshwater Use,0.5850237420775911
+2 - Ocean Acidification,4 - Biogeochemical Flows,0.5770523950444338
+6 - Land System Change,7 - Biosphere Integrity,0.5540932672553739
+5 - Global Freshwater Use,6 - Land System Change,0.5513932759833149
+2 - Ocean Acidification,5 - Global Freshwater Use,0.5264962152793242
+1 - Climate Change,7 - Biosphere Integrity,0.5225599673246509
+3 - Stratospheric Ozone Depletion,9 - Atmospheric Aerosol Loading,0.5131245773289481
+1 - Climate Change,4 - Biogeochemical Flows,0.5091215388664887
+4 - Biogeochemical Flows,6 - Land System Change,0.5084393893186542
+1 - Climate Change,2 - Ocean Acidification,0.5065343949092315
+1 - Climate Change,3 - Stratospheric Ozone Depletion,0.5038818636403841
+5 - Global Freshwater Use,7 - Biosphere Integrity,0.500121855244852
+3 - Stratospheric Ozone Depletion,5 - Global Freshwater Use,0.4505178497027198
+3 - Stratospheric Ozone Depletion,4 - Biogeochemical Flows,0.440056294945971
+2 - Ocean Acidification,6 - Land System Change,0.4319090862184921
+3 - Stratospheric Ozone Depletion,6 - Land System Change,0.4304854792662556
+2 - Ocean Acidification,7 - Biosphere Integrity,0.4293698359026607
+1 - Climate Change,8 - Novel Entities,0.42835912186514286
+6 - Land System Change,8 - Novel Entities,0.4169316709552522
+4 - Biogeochemical Flows,7 - Biosphere Integrity,0.4168507514006057
+7 - Biosphere Integrity,8 - Novel Entities,0.4113279804201132
+5 - Global Freshwater Use,8 - Novel Entities,0.41021898548550473
+1 - Climate Change,9 - Atmospheric Aerosol Loading,0.388298009843321
+4 - Biogeochemical Flows,9 - Atmospheric Aerosol Loading,0.38587143416520564
+2 - Ocean Acidification,3 - Stratospheric Ozone Depletion,0.37305705862474536
+3 - Stratospheric Ozone Depletion,8 - Novel Entities,0.3679395707125076
+4 - Biogeochemical Flows,8 - Novel Entities,0.36203382087865704
+5 - Global Freshwater Use,9 - Atmospheric Aerosol Loading,0.348289636048426
+6 - Land System Change,9 - Atmospheric Aerosol Loading,0.33176390331689903
+3 - Stratospheric Ozone Depletion,7 - Biosphere Integrity,0.33107074682508697
+2 - Ocean Acidification,8 - Novel Entities,0.3265939016669064
+8 - Novel Entities,9 - Atmospheric Aerosol Loading,0.3240182431742422
+2 - Ocean Acidification,9 - Atmospheric Aerosol Loading,0.26585527554406146
+7 - Biosphere Integrity,9 - Atmospheric Aerosol Loading,0.20024732010701785

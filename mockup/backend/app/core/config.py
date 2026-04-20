@@ -30,7 +30,7 @@ class Settings(BaseSettings):
 
     llm_enabled: bool = Field(default=True, alias="LLM_ENABLED")
     ollama_url: str = Field(default="http://127.0.0.1:11434/api/generate", alias="OLLAMA_URL")
-    ollama_model_name: str = Field(default="gemma4:26b", alias="OLLAMA_MODEL_NAME")
+    ollama_model_name: str = Field(default="qwen2.5:14b", alias="OLLAMA_MODEL_NAME")
     llm_temperature: float = Field(default=0.0, alias="LLM_TEMPERATURE")
     database_url_override: str | None = Field(default=None, alias="DATABASE_URL")
 
