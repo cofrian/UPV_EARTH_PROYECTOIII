@@ -7,8 +7,8 @@ import time
 # 1. CARGA DE DATOS Y CONSTRUCCIÓN DE REGLAS
 # ==========================================
 print("Cargando datasets...")
-# Rutas a tus archivos (asegúrate de que estén en la misma carpeta o ajusta la ruta)
-ruta_corpus = 'data/corpus/master_corpus_mixto_1000_clean_enriched.csv'
+# Rutas a tus archivos en la máquina virtual
+ruta_corpus = '/home/sortmon/UPV_EARTH_PROYECTOIII/data/corpus/master_corpus_mixto_1000_clean_enriched.csv'
 ruta_pbs = '/home/sortmon/UPV_EARTH_PROYECTOIII/corpus_PB/data/pb_reference.csv'
 
 try:
@@ -33,11 +33,11 @@ for index, row in df_pbs.iterrows():
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "gemma4:26b"
 
-def classify_abstract_advanced(abstract_text):
-    prompt = f"""You are an expert scientific evaluator auditing research abstracts from the Universitat Politècnica de València (UPV) for their impact on Planetary Boundaries (PBs).
+def classify_abstract_strict(abstract_text):
+    # NUEVO PROMPT: Similitud estricta + Evaluación de Confianza (Confidence Score)
+    prompt = f"""You are a strict and precise scientific evaluator analyzing research abstracts from the Universitat Politècnica de València (UPV) against the Planetary Boundaries (PBs) framework.
 
-Your task is to analyze the abstract and strictly apply the activation and exclusion rules provided below. 
-Do NOT assign a PB just because the text sounds "green" or "sustainable" (Misled by Positivity bias). You need explicit evidence.
+Your task is to find the PB with the HIGHEST conceptual similarity to the abstract. You must strictly apply the activation rules and evaluate the exclusion rules. Do not force a match if the scientific connection is weak.
 
 ### PLANETARY BOUNDARIES RULES:
 {pb_rules}
@@ -46,26 +46,22 @@ Do NOT assign a PB just because the text sounds "green" or "sustainable" (Misled
 "{abstract_text}"
 
 ### INSTRUCTIONS:
-Step 1: Think step-by-step. Analyze if the abstract contains explicit metrics, outcomes, or core keywords related to any PB.
-Step 2: Check the "EXCLUSION RULE" for that PB. Does the abstract violate the exclusion rule? If yes, discard the PB.
-Step 3: Output the final decision in JSON format EXACTLY as follows:
+Step 1: Concept Extraction. Identify the core scientific concepts, phenomena, or metrics in the abstract.
+Step 2: Similarity Matching. Compare these concepts against the Core Definition and Activation Logic of each PB. Select the PB(s) with the strongest scientific overlap.
+Step 3: Exclusion Check. Apply the EXCLUSION RULE. If the rule is explicitly violated, the PB MUST be discarded.
+Step 4: Output the final decision in JSON format EXACTLY as follows. You must include a "confidence" score (High, Medium, or Low) evaluating how strong the match is.
 
 {{
-    "reasoning_process": "Your step-by-step analysis applying the activation and exclusion rules. Mention why a PB was included or discarded.",
+    "reasoning_process": "Analyze the similarity and evaluate the exclusion rules to justify your decision.",
     "assigned_pbs": [
         {{
             "pb_code": "PB1",
-            "reason": "Direct quote from the text that proves the activation logic."
+            "reason": "Justify why this is the highest similarity match.",
+            "confidence": "High / Medium / Low"
         }}
     ]
 }}
-If no PB is relevant, return {{"reasoning_process": "Explain why none apply...", "assigned_pbs": []}}.
-
-### EXAMPLE OF EXPECTED OUTPUT:
-{{
-    "reasoning_process": "Step 1: The abstract discusses meteorological phenomena (SSW) and stratospheric clouds, not anthropogenic emissions. Step 2: It violates the exclusion rule for PB1 and PB3. No other PBs apply.",
-    "assigned_pbs": []
-}}
+If no PB meets the criteria after applying the strict rules, return {{"reasoning_process": "Explain why similarities were too weak or excluded...", "assigned_pbs": []}}.
 """
 
     payload = {
@@ -73,7 +69,7 @@ If no PB is relevant, return {{"reasoning_process": "Explain why none apply...",
         "prompt": prompt,
         "stream": False,
         "options": {
-            "temperature": 0.1, 
+            "temperature": 0.0, # Determinismo puro: el modelo será estricto y analítico
             "top_p": 0.9
         }
     }
@@ -91,7 +87,7 @@ If no PB is relevant, return {{"reasoning_process": "Explain why none apply...",
         return json.dumps({"error": str(e)}), time.time() - start_time
 
 # ==========================================
-# EXTRAE EL JSON AUNQUE EL MODELO HABLE DE MÁS
+# EXTRAE EL JSON (AHORA INCLUYE CONFIDENCE)
 # ==========================================
 def parse_llm_output(raw_text):
     try:
@@ -110,41 +106,47 @@ def parse_llm_output(raw_text):
         assigned_pbs = data.get("assigned_pbs", [])
         
         if not assigned_pbs or len(assigned_pbs) == 0:
-            pb_codes_str = "None"
+            return reasoning, "None", "N/A" # Retorna "N/A" en confianza si no hay PB
         else:
             pb_codes_str = ", ".join([item.get("pb_code", "") for item in assigned_pbs])
+            # Extraemos la confianza (si por algún motivo el modelo olvida ponerlo, dirá "Unknown")
+            confidence_str = ", ".join([item.get("confidence", "Unknown") for item in assigned_pbs])
             
-        return reasoning, pb_codes_str
+            return reasoning, pb_codes_str, confidence_str
     except Exception as e:
-        return f"Error procesando JSON: {e}", "Error_Formato"
+        return f"Error procesando JSON: {e}", "Error_Formato", "Error"
 
 # ==========================================
 # 3. BUCLE DE EVALUACIÓN
 # ==========================================
-sample_size = 5  # Abstracts a procesar
+sample_size = 5  # Abstracts a procesar (para pruebas rápidas, luego sube a 50 o 1000)
 df_sample = df_corpus.head(sample_size).copy()
 
 resultados_raw = []
 resultados_reasoning = []
 resultados_codes = []
+resultados_confidence = [] # NUEVA LISTA para guardar el score
 tiempos_inferencia = []
 
-print(f"\nIniciando evaluación avanzada con el modelo: {MODEL_NAME}")
-print("-" * 50)
+print(f"\nIniciando evaluación ESTRICTA con el modelo: {MODEL_NAME}")
+print("-" * 70)
 
 for index, row in df_sample.iterrows():
     print(f"Procesando Abstract {index + 1}/{sample_size} (Doc ID: {row['doc_id']})...", end=" ", flush=True)
     
-    llm_out, t_elapsed = classify_abstract_advanced(row['clean_abstract'])
+    llm_out, t_elapsed = classify_abstract_strict(row['clean_abstract'])
     
-    reasoning, codes = parse_llm_output(llm_out)
+    # Ahora la función devuelve 3 valores
+    reasoning, codes, confidence = parse_llm_output(llm_out)
     
     resultados_raw.append(llm_out)
     resultados_reasoning.append(reasoning)
     resultados_codes.append(codes)
+    resultados_confidence.append(confidence)
     tiempos_inferencia.append(t_elapsed)
     
-    print(f"[{t_elapsed:.2f}s] -> PBs Detectados: {codes}")
+    # Imprimimos también el nivel de confianza en tiempo real
+    print(f"[{t_elapsed:.2f}s] -> PBs: {codes} | Confianza: {confidence}")
 
 # ==========================================
 # 4. GUARDAR RESULTADOS PARA ANÁLISIS
@@ -152,16 +154,17 @@ for index, row in df_sample.iterrows():
 df_sample['llm_raw_output'] = resultados_raw
 df_sample['llm_reasoning'] = resultados_reasoning
 df_sample['llm_predicted_pbs'] = resultados_codes 
+df_sample['llm_confidence'] = resultados_confidence # NUEVA COLUMNA en tu CSV
 df_sample['inference_time_sec'] = tiempos_inferencia
 
-# Reordenamos columnas para la vista en Excel
-cols_to_front = ['doc_id', 'llm_predicted_pbs', 'llm_reasoning', 'clean_abstract']
+# Reordenamos columnas para la vista en Excel, poniendo la confianza junto al PB
+cols_to_front = ['doc_id', 'llm_predicted_pbs', 'llm_confidence', 'llm_reasoning', 'clean_abstract']
 remaining_cols = [c for c in df_sample.columns if c not in cols_to_front]
 df_sample = df_sample[cols_to_front + remaining_cols]
 
-output_filename = f'eval_{MODEL_NAME.replace(":", "_")}_advanced.csv'
+output_filename = f'eval_{MODEL_NAME.replace(":", "_")}_strict_confidence.csv'
 df_sample.to_csv(output_filename, index=False)
 
-print("\n" + "=" * 50)
+print("\n" + "=" * 70)
 print(f"✅ Completado. Tiempo medio por abstract: {sum(tiempos_inferencia)/len(tiempos_inferencia):.2f} segundos.")
 print(f"📄 Resultados guardados listos para revisar en: {output_filename}")

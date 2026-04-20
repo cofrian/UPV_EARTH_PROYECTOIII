@@ -1,0 +1,195 @@
+import re
+import uuid
+from collections import Counter
+from datetime import datetime
+
+from sqlalchemy import func
+from sqlalchemy.orm import Session
+
+from app.db.models.paper import Paper
+from app.db.models.pb_result import PBResult
+
+
+def _normalize_source_label(source: str | None) -> str:
+    if not source:
+        return "Sin fuente"
+
+    key = source.strip().lower()
+    mapping = {
+        "rclone_drive": "Repositorio institucional",
+        "rclone": "Repositorio institucional",
+        "uploaded_pdf": "Subidas manuales",
+    }
+    return mapping.get(key, source)
+
+
+def overview(db: Session) -> dict:
+    total_papers = db.query(func.count(Paper.id)).scalar() or 0
+    abstracts_valid = db.query(func.count(Paper.id)).filter(func.length(Paper.abstract_norm) > 0).scalar() or 0
+    papers_classified = db.query(func.count(PBResult.id)).scalar() or 0
+    unique_journals = db.query(func.count(func.distinct(Paper.journal))).scalar() or 0
+    avg_abstract_length = db.query(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
+
+    return {
+        "total_papers": int(total_papers),
+        "abstracts_valid": int(abstracts_valid),
+        "papers_classified": int(papers_classified),
+        "unique_journals": int(unique_journals),
+        "avg_abstract_length": float(avg_abstract_length),
+    }
+
+
+def distribution_by_year(db: Session) -> list[dict]:
+    max_dashboard_year = min(2024, datetime.now().year)
+    rows = (
+        db.query(Paper.year, func.count(Paper.id))
+        .filter(Paper.year.isnot(None))
+        .filter(Paper.year.between(1900, max_dashboard_year))
+        .group_by(Paper.year)
+        .order_by(Paper.year.asc())
+        .all()
+    )
+    return [{"label": str(year), "value": count} for year, count in rows]
+
+
+def distribution_by_pb(db: Session) -> list[dict]:
+    rows = (
+        db.query(PBResult.top_pb_code, func.count(PBResult.id))
+        .group_by(PBResult.top_pb_code)
+        .order_by(func.count(PBResult.id).desc())
+        .all()
+    )
+    return [{"label": pb, "value": count} for pb, count in rows]
+
+
+def distribution_by_source(db: Session) -> list[dict]:
+    rows = (
+        db.query(Paper.source, func.count(Paper.id))
+        .filter(Paper.source.isnot(None))
+        .group_by(Paper.source)
+        .order_by(func.count(Paper.id).desc())
+        .all()
+    )
+    aggregated: dict[str, int] = {}
+    for source, count in rows:
+        label = _normalize_source_label(source)
+        aggregated[label] = aggregated.get(label, 0) + int(count)
+
+    return [
+        {"label": label, "value": value}
+        for label, value in sorted(aggregated.items(), key=lambda item: item[1], reverse=True)
+    ]
+
+
+def distribution_by_abstract_length(db: Session) -> list[dict]:
+    bins = [
+        (0, 500, "0-500"),
+        (501, 1000, "501-1000"),
+        (1001, 1500, "1001-1500"),
+        (1501, 3000, "1501-3000"),
+        (3001, 100000, "3001+"),
+    ]
+    result: list[dict] = []
+    for low, high, label in bins:
+        count = (
+            db.query(func.count(Paper.id))
+            .filter(func.length(Paper.abstract_norm).between(low, high))
+            .scalar()
+            or 0
+        )
+        result.append({"label": label, "value": int(count)})
+    return result
+
+
+def _parse_keywords(raw_keywords: str | None) -> list[str]:
+    if not raw_keywords:
+        return []
+    chunks = re.split(r"[,;|]", raw_keywords)
+    keywords = [item.strip().lower() for item in chunks if item and item.strip()]
+    return list(dict.fromkeys(keywords))
+
+
+def _keyword_counter(papers: list[Paper]) -> Counter:
+    counter: Counter = Counter()
+    for paper in papers:
+        for keyword in _parse_keywords(paper.keywords):
+            counter[keyword] += 1
+    return counter
+
+
+def top_keywords_global(db: Session, limit: int = 20) -> list[dict]:
+    papers = db.query(Paper).all()
+    counts = _keyword_counter(papers)
+    return [{"keyword": keyword, "value": value} for keyword, value in counts.most_common(limit)]
+
+
+def top_keywords_by_pb(db: Session, pb_code: str, limit: int = 20) -> list[dict]:
+    papers = (
+        db.query(Paper)
+        .join(PBResult, PBResult.paper_id == Paper.id)
+        .filter(PBResult.top_pb_code == pb_code)
+        .all()
+    )
+    counts = _keyword_counter(papers)
+    return [{"keyword": keyword, "value": value} for keyword, value in counts.most_common(limit)]
+
+
+def paper_comparison(db: Session, paper_id: uuid.UUID) -> dict | None:
+    paper = db.query(Paper).filter(Paper.id == paper_id).first()
+    if not paper:
+        return None
+
+    pb_result = (
+        db.query(PBResult)
+        .filter(PBResult.paper_id == paper.id)
+        .order_by(PBResult.created_at.desc())
+        .first()
+    )
+    top_pb = pb_result.top_pb_code if pb_result else "PB-UNK"
+
+    paper_length = len(paper.abstract_norm or "")
+    global_avg_length = db.query(func.avg(func.length(Paper.abstract_norm))).scalar() or 0.0
+
+    pb_avg_length = (
+        db.query(func.avg(func.length(Paper.abstract_norm)))
+        .join(PBResult, PBResult.paper_id == Paper.id)
+        .filter(PBResult.top_pb_code == top_pb)
+        .scalar()
+        or 0.0
+    )
+
+    paper_keywords = _parse_keywords(paper.keywords)
+    global_top = top_keywords_global(db, limit=15)
+    pb_top = top_keywords_by_pb(db, top_pb, limit=15)
+
+    global_lookup = {item["keyword"]: item["value"] for item in global_top}
+    pb_lookup = {item["keyword"]: item["value"] for item in pb_top}
+
+    global_overlap = [
+        {"keyword": keyword, "value": global_lookup[keyword]}
+        for keyword in paper_keywords
+        if keyword in global_lookup
+    ]
+    pb_overlap = [
+        {"keyword": keyword, "value": pb_lookup[keyword]}
+        for keyword in paper_keywords
+        if keyword in pb_lookup
+    ]
+
+    return {
+        "paper_id": str(paper.id),
+        "title": paper.title,
+        "top_pb_code": top_pb,
+        "length_comparison": {
+            "paper_length": int(paper_length),
+            "global_avg_length": float(global_avg_length),
+            "pb_avg_length": float(pb_avg_length),
+        },
+        "keyword_comparison": {
+            "paper_keywords": paper_keywords,
+            "global_overlap": global_overlap,
+            "pb_overlap": pb_overlap,
+            "global_top_keywords": global_top,
+            "pb_top_keywords": pb_top,
+        },
+    }
