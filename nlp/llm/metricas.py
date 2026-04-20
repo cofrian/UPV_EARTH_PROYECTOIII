@@ -4,16 +4,18 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
+OUTPUTS_DIR = BASE_DIR / 'outputs'
+OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ==========================================
 # 1. CONFIGURACIÓN Y RUTAS
 # ==========================================
 print("Iniciando Pipeline de Análisis Multietiqueta...")
 
-ruta_humano = BASE_DIR / 'validacion_real.csv'
-ruta_gemma  = BASE_DIR / 'eval_gemma4_26b_validacion_108.csv'
-ruta_qwen   = BASE_DIR / 'eval_qwen2.5_14b_validacion_108.csv'
-ruta_llama  = BASE_DIR / 'eval_llama3_1_8b_validacion_108.csv'
+ruta_humano = OUTPUTS_DIR / 'validacion_real.csv'
+ruta_gemma  = OUTPUTS_DIR / 'eval_gemma4_26b_validacion_108.csv'
+ruta_qwen   = OUTPUTS_DIR / 'eval_qwen2.5_14b_validacion_108.csv'
+ruta_llama  = OUTPUTS_DIR / 'eval_llama3_1_8b_validacion_108.csv'
 
 # ==========================================
 # 2. CARGA SEGURA Y LIMPIEZA DE DATOS
@@ -177,6 +179,6 @@ df_master['Gemma_PBs_Set'] = df_master['Gemma_PBs_Set'].apply(set_to_string)
 df_master['Qwen_PBs_Set']  = df_master['Qwen_PBs_Set'].apply(set_to_string)
 df_master['Llama_PBs_Set'] = df_master['Llama_PBs_Set'].apply(set_to_string)
 
-ruta_salida = BASE_DIR / 'Matriz_Multietiqueta_Final.csv'
+ruta_salida = OUTPUTS_DIR / 'Matriz_Multietiqueta_Final.csv'
 df_master.to_csv(ruta_salida, index=False, encoding='utf-8-sig')
 print(f"✅ Matriz detallada guardada en: {ruta_salida}")

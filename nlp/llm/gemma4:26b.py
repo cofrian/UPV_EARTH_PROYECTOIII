@@ -8,6 +8,8 @@ from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 SCRIPT_DIR = Path(__file__).resolve().parent
+OUTPUTS_DIR = SCRIPT_DIR / 'outputs'
+OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ==========================================
 # 1. CARGA DE DATOS Y FILTRADO POR LISTA EXACTA
@@ -154,7 +156,7 @@ def parse_llm_output(raw_text):
 # 3 Y 4. BUCLE DE EVALUACIÓN CON GUARDADO SEGURO
 # ==========================================
 total_papers = len(df_sample)
-output_filename = SCRIPT_DIR / f'eval_{MODEL_NAME.replace(":", "_")}_validacion_108.csv'
+output_filename = OUTPUTS_DIR / f'eval_{MODEL_NAME.replace(":", "_")}_validacion_108.csv'
 
 # Limpiamos el archivo si ya existía para empezar de cero
 if os.path.exists(output_filename):

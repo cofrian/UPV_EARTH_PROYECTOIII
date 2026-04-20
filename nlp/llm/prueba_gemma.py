@@ -7,6 +7,8 @@ from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 SCRIPT_DIR = Path(__file__).resolve().parent
+OUTPUTS_DIR = SCRIPT_DIR / 'outputs'
+OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ==========================================
 # 1. CARGA DE DATOS Y CONSTRUCCIÓN DE REGLAS
@@ -167,7 +169,7 @@ cols_to_front = ['doc_id', 'llm_predicted_pbs', 'llm_confidence', 'llm_reasoning
 remaining_cols = [c for c in df_sample.columns if c not in cols_to_front]
 df_sample = df_sample[cols_to_front + remaining_cols]
 
-output_filename = SCRIPT_DIR / f'eval_{MODEL_NAME.replace(":", "_")}_strict_confidence.csv'
+output_filename = OUTPUTS_DIR / f'eval_{MODEL_NAME.replace(":", "_")}_strict_confidence.csv'
 df_sample.to_csv(output_filename, index=False)
 
 print("\n" + "=" * 70)

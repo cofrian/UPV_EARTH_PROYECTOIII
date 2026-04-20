@@ -3,13 +3,15 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
+OUTPUTS_DIR = BASE_DIR / 'outputs'
+OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ==========================================
 # 1. RUTAS DE LOS ARCHIVOS
 # ==========================================
-ruta_humano = BASE_DIR / 'validacion_real.csv'
-ruta_gemma  = BASE_DIR / 'eval_gemma4_26b_validacion_108.csv'
-ruta_qwen   = BASE_DIR / 'eval_qwen2.5_14b_validacion_108.csv'
+ruta_humano = OUTPUTS_DIR / 'validacion_real.csv'
+ruta_gemma  = OUTPUTS_DIR / 'eval_gemma4_26b_validacion_108.csv'
+ruta_qwen   = OUTPUTS_DIR / 'eval_qwen2.5_14b_validacion_108.csv'
 
 def cargar_csv(ruta):
     try:
@@ -91,7 +93,7 @@ print(f"Total de discrepancias (Donde piensan distinto): {len(df_discrepancias)}
 df_discrepancias = df_discrepancias[['doc_id', 'Humano', 'Qwen_PB', 'Gemma_PB', 'Qwen_Reasoning', 'Gemma_Reasoning', 'clean_abstract']]
 
 # Guardar el reporte
-ruta_batalla = BASE_DIR / 'Batalla_Qwen_vs_Gemma.csv'
+ruta_batalla = OUTPUTS_DIR / 'Batalla_Qwen_vs_Gemma.csv'
 df_discrepancias.to_csv(ruta_batalla, index=False, encoding='utf-8-sig')
 print(f"\n✅ Reporte de batalla guardado en: {ruta_batalla}")
 print("Ábrelo en Excel/CSV, lee los razonamientos y decide quién tiene la razón.")
