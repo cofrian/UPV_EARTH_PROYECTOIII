@@ -69,16 +69,6 @@ En ese modo, `docker-compose.yml` ya fuerza `OLLAMA_URL=http://ollama:11434/api/
 - `GET /api/v1/analytics/papers/{paper_id}/comparison`
 - `GET /api/v1/jobs/{job_id}/events?limit=200` (eventos del pipeline + metricas runtime CPU/RAM/GPU)
 
-## Limpieza de uploads de prueba (opcional)
-
-Si probaste subidas manuales y quieres recuperar los conteos base del corpus seed:
-
-```bash
-cd mockup/backend
-export DATABASE_URL='sqlite:////home/sortmon/UPV_EARTH_PROYECTOIII/mockup/data/seed/upvearth_local.db'
-/home/sortmon/UPV_EARTH_PROYECTOIII/.venv/bin/python -m scripts.purge_uploaded_content
-```
-
 ## Notas de rutas
 - El stack usa datos reales del repo padre en modo solo lectura:
   - ../data/corpus -> /app/data/corpus

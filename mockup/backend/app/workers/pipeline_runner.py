@@ -1,5 +1,4 @@
 import uuid
-from pathlib import Path
 
 from sqlalchemy.orm import Session
 
@@ -73,8 +72,7 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
             keywords=None,
             journal=None,
             language="en",
-            # No persistimos la ruta física del upload para evitar retención innecesaria.
-            pdf_path=None,
+            pdf_path=pdf_path,
         )
         jobs.attach_paper_to_job(job, paper.id)
 
@@ -107,13 +105,3 @@ def run_pdf_pipeline(db: Session, job_id: uuid.UUID, pdf_path: str) -> None:
             error_code="PIPELINE_ERROR",
             error_message=str(exc),
         )
-    finally:
-        # Limpieza del fichero subido: el mockup no debe retener PDFs en disco.
-        try:
-            upload_path = Path(pdf_path)
-            if upload_path.exists():
-                upload_path.unlink()
-                jobs.add_event(job.id, "cleanup_upload", {"deleted": str(upload_path), **collect_system_metrics()})
-        except Exception:
-            # Evitamos tumbar el job por un fallo de limpieza.
-            pass
